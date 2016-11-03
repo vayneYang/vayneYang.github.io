@@ -753,26 +753,26 @@
       
         
           
-            <p>###简介<br>渗透测试是一种合法且授权定位计算机系统，并对其成功实施漏洞攻击的方法，其目的是为了使这些受测系统更加安全。</p>
+            <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>渗透测试是一种合法且授权定位计算机系统，并对其成功实施漏洞攻击的方法，其目的是为了使这些受测系统更加安全。</p>
 <p>渗透测试（Penetration Testing或者Pen Testing，PT）也称为：</p>
 <ul>
 <li>黑客活动（Hacking）</li>
 <li>道德黑客（Ethical Hacking）</li>
 <li>白帽黑客（White Hat Hacking）</li>
 </ul>
-<h4 id="搭建平台"><a href="#搭建平台" class="headerlink" title="搭建平台"></a>搭建平台</h4><p>Linux中用于渗透测试的最常用的发行版之一是“BackTrack”（现在，BackTrack已被Kali Linux所代替，BT将不再维护），它预先加载了成百上千种安装并配置好的安全工具。默认情况下，Backtrack并不启用网络功能，因为作为渗透测试人员通常会设法隐藏自己来避免被人发现，计算机一旦接入网络，启动之后就会马上通过广播的方式向整个网络申请DHCP服务器和IP地址，暴露行踪。为了避免这种情况，Backtrack机器的网络接口默认是关闭的。</p>
+<h3 id="搭建平台"><a href="#搭建平台" class="headerlink" title="搭建平台"></a>搭建平台</h3><p>Linux中用于渗透测试的最常用的发行版之一是“BackTrack”（现在，BackTrack已被Kali Linux所代替，BT将不再维护），它预先加载了成百上千种安装并配置好的安全工具。默认情况下，Backtrack并不启用网络功能，因为作为渗透测试人员通常会设法隐藏自己来避免被人发现，计算机一旦接入网络，启动之后就会马上通过广播的方式向整个网络申请DHCP服务器和IP地址，暴露行踪。为了避免这种情况，Backtrack机器的网络接口默认是关闭的。</p>
 <p>  启用网络（kali linux）：【ifconfig用于临时设置，重启失效】<br><code>ifconfig -a</code><br><code>ifconfig eth0 up</code></p>
 <p>  手动配置IP地址：<br><code>ifconfig eth0 [IP] netmask [子网掩码]</code></p>
 <p>  设置网关：<br><code>route add default  gw 网关地址</code><br> <code>route add default dev eth0   //默认路由，将去往未知网络的数据包全部从接口eth0发出去</code></p>
 <p>  使用DHCP分配IP地址：<br><code>dhclient eth0</code></p>
-<h3 id="黑客渗透测试入门方法论"><a href="#黑客渗透测试入门方法论" class="headerlink" title="黑客渗透测试入门方法论"></a>黑客渗透测试入门方法论</h3><h4 id="侦察"><a href="#侦察" class="headerlink" title="侦察"></a>侦察</h4><p>也就是收集信息，在收集目标信息上所花的时间越多，后续阶段的成功率就越高。而这一步骤恰恰是当前整个渗透测试方法体系中最容易被忽略、最不被重视、最易受人误解的一环。</p>
-<h4 id="扫描"><a href="#扫描" class="headerlink" title="扫描"></a>扫描</h4><p>— 端口扫描</p>
+<h2 id="黑客渗透测试入门方法论"><a href="#黑客渗透测试入门方法论" class="headerlink" title="黑客渗透测试入门方法论"></a>黑客渗透测试入门方法论</h2><h3 id="侦察"><a href="#侦察" class="headerlink" title="侦察"></a>侦察</h3><p>也就是收集信息，在收集目标信息上所花的时间越多，后续阶段的成功率就越高。而这一步骤恰恰是当前整个渗透测试方法体系中最容易被忽略、最不被重视、最易受人误解的一环。</p>
+<h3 id="扫描"><a href="#扫描" class="headerlink" title="扫描"></a>扫描</h3><p>— 端口扫描</p>
 <ul>
 <li>漏洞扫描</li>
 </ul>
 <p>一旦完成了端口扫描，就拥有了目标的开放端口和可能已开启服务的列表；漏洞扫描用于定位和识别在目标计算机上运行的软件和服务所存在的缺陷。</p>
-<h4 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h4><p>漏洞利用的最终目标是在目标计算机上获得管理员权限（即完全控制权）。</p>
-<h4 id="维持访问"><a href="#维持访问" class="headerlink" title="维持访问"></a>维持访问</h4><p>通常，在漏洞利用阶段提供的攻击载荷只能提供开启系统的临时访问权限，所以需要创建一个可以永久控制目标系统的后门进程。这个后门进程可以让我们以管理员的权限重新开启已经关闭的程序，甚至重启目标计算机。</p>
+<h3 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h3><p>漏洞利用的最终目标是在目标计算机上获得管理员权限（即完全控制权）。</p>
+<h3 id="维持访问"><a href="#维持访问" class="headerlink" title="维持访问"></a>维持访问</h3><p>通常，在漏洞利用阶段提供的攻击载荷只能提供开启系统的临时访问权限，所以需要创建一个可以永久控制目标系统的后门进程。这个后门进程可以让我们以管理员的权限重新开启已经关闭的程序，甚至重启目标计算机。</p>
 
           
         
