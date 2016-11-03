@@ -80,7 +80,7 @@
 <link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="TinyOS,nesC," />
+  <meta name="keywords" content="Salted fish Yang." />
 
 
 
@@ -96,19 +96,15 @@
 
 
 
-<meta name="description" content="概述printf 库(tos/lib/printf)是TinyOS系统的打印库，运行在节点上的应用程序使用printf库可以将调试信息发送到PC串口，最终显示在终端屏幕上。使用时需要在使用到printf的组件中包含printf.h头文件。
-示例Makefile文件：1234CFLAGS += -I$(TOSDIR)/lib/printf    //定义printf库的位置CFLAGS += -DT">
-<meta property="og:type" content="article">
-<meta property="og:title" content="tinyos中Printf的使用">
-<meta property="og:url" content="http://www.saltedfishyang.lol/2015/03/12/tinyosPrintf/index.html">
+<meta name="description">
+<meta property="og:type" content="website">
+<meta property="og:title" content="梦想成为一条咸鱼">
+<meta property="og:url" content="http://www.saltedfishyang.lol/tags/职业规划/index.html">
 <meta property="og:site_name" content="梦想成为一条咸鱼">
-<meta property="og:description" content="概述printf 库(tos/lib/printf)是TinyOS系统的打印库，运行在节点上的应用程序使用printf库可以将调试信息发送到PC串口，最终显示在终端屏幕上。使用时需要在使用到printf的组件中包含printf.h头文件。
-示例Makefile文件：1234CFLAGS += -I$(TOSDIR)/lib/printf    //定义printf库的位置CFLAGS += -DT">
-<meta property="og:updated_time" content="2016-04-01T17:43:15.000Z">
+<meta property="og:description">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="tinyos中Printf的使用">
-<meta name="twitter:description" content="概述printf 库(tos/lib/printf)是TinyOS系统的打印库，运行在节点上的应用程序使用printf库可以将调试信息发送到PC串口，最终显示在终端屏幕上。使用时需要在使用到printf的组件中包含printf.h头文件。
-示例Makefile文件：1234CFLAGS += -I$(TOSDIR)/lib/printf    //定义printf库的位置CFLAGS += -DT">
+<meta name="twitter:title" content="梦想成为一条咸鱼">
+<meta name="twitter:description">
 
 
 
@@ -129,10 +125,10 @@
 
 
 
-  <link rel="canonical" href="http://www.saltedfishyang.lol/2015/03/12/tinyosPrintf/"/>
+  <link rel="canonical" href="http://www.saltedfishyang.lol/tags/职业规划/"/>
 
 
-  <title> tinyos中Printf的使用 | 梦想成为一条咸鱼 </title>
+  <title> 标签: 职业规划 | 梦想成为一条咸鱼 </title>
 </head>
 
 <body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
@@ -163,7 +159,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
+  <div class="container one-collumn sidebar-position-left  ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
@@ -251,165 +247,46 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-expand">
-    
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                tinyos中Printf的使用
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-03-12T12:25:36+08:00" content="2015-03-12">
-              2015-03-12
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/TinyOS/" itemprop="url" rel="index">
-                    <span itemprop="name">TinyOS</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/03/12/tinyosPrintf/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/03/12/tinyosPrintf/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2015/03/12/tinyosPrintf/" class="leancloud_visitors" data-flag-title="tinyos中Printf的使用">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>printf 库(tos/lib/printf)是TinyOS系统的打印库，运行在节点上的应用程序使用printf库可以将调试信息发送到PC串口，最终显示在终端屏幕上。使用时需要在使用到printf的组件中包含printf.h头文件。</p>
-<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><p>Makefile文件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">CFLAGS += -I$(TOSDIR)/lib/printf    //定义printf库的位置</span><br><span class="line">CFLAGS += -DTOSH_DATA_LENGTH=150   //宏定义节点传输数据包最大有效荷载为150字节</span><br><span class="line">CFLAGS += -DCC2420_DEF_RFPOWER=1  //宏定义发射功率为1</span><br><span class="line">include $(MAKERULES)</span><br></pre></td></tr></table></figure></p>
-<h3 id="P-S"><a href="#P-S" class="headerlink" title="P.S."></a>P.S.</h3><p>CFLAGS +=为引入宏定义，-D*表示：#define *<br>CFLAGS += -DTOSH_DATA_LENGTH=150 等价于在.c文件里定义#define TOSH_DATA_LENGTH=150 </p>
-
-      
+  <div id="posts" class="posts-collapse">
+    <div class="collection-title">
+      <h2 >
+        职业规划
+        <small>标签</small>
+      </h2>
     </div>
 
-    <div>
+    
       
+
+  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
+    <header class="post-header">
+
+      <h1 class="post-title">
         
-
-      
-    </div>
-
-    <div>
-      
+            <a class="post-title-link" href="/2016/11/03/杂谈/" itemprop="url">
+              
+                <span itemprop="name">杂谈</span>
+              
+            </a>
         
+      </h1>
 
-      
-    </div>
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2016-11-03T13:03:04+08:00"
+              content="2016-11-03" >
+          11-03
+        </time>
+      </div>
 
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/TinyOS/" rel="tag">#TinyOS</a>
-          
-            <a href="/tags/nesC/" rel="tag">#nesC</a>
-          
-        </div>
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2015/02/17/tinyos-2/" rel="next" title="TinyOS 节点-节点无线通信（2）">
-                <i class="fa fa-chevron-left"></i> TinyOS 节点-节点无线通信（2）
-              </a>
-            
-          </div>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2015/04/18/penetrationTest/" rel="prev" title="渗透测试方法论">
-                渗透测试方法论 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
+    </header>
   </article>
 
 
-
-    <div class="post-spread">
-      
-    </div>
+    
   </div>
+
+  
 
 
           </div>
@@ -417,14 +294,6 @@
 
 
           
-  <div class="comments" id="comments">
-    
-      <div class="ds-thread" data-thread-key="2015/03/12/tinyosPrintf/"
-           data-title="tinyos中Printf的使用" data-url="http://www.saltedfishyang.lol/2015/03/12/tinyosPrintf/">
-      </div>
-    
-  </div>
-
 
         </div>
         
@@ -444,17 +313,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel ">
+      <section class="site-overview sidebar-panel  sidebar-panel-active ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="https://avatars1.githubusercontent.com/u/10229863?v=3&s=460"
@@ -504,17 +364,6 @@
 
       </section>
 
-      
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-            
-              
-            
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#示例"><span class="nav-number">2.</span> <span class="nav-text">示例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#P-S"><span class="nav-number">3.</span> <span class="nav-text">P.S.</span></a></li></ol></div>
-            
-          </div>
-        </section>
       
 
     </div>
@@ -611,10 +460,6 @@
   
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
-
-
 
   
 
