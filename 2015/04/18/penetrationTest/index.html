@@ -1,802 +1,340 @@
-<!doctype html>
-
-
-
-  
-
-
-<html class="theme-next mist use-motion">
+<!DOCTYPE html>
+<html lang=zh>
 <head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
-
-
-
-
-  
-  
-  
-  
-
-  
-    
-    
-  
-
-  
-
-  
-
-  
-
-  
-    
-      
-    
-
-    
-  
-
-  
-    
-    
-    <link href="//fonts.googleapis.com/css?family=STFangsong:300,300italic,400,400italic,700,700italic|Monaco:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
-
-
-
-
-
-
-<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="方法论," />
-
-
-
-
-
-
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
-
-
-
-
-
-
-<meta name="description" content="简介渗透测试是一种合法且授权定位计算机系统，并对其成功实施漏洞攻击的方法，其目的是为了使这些受测系统更加安全。
-渗透测试（Penetration Testing或者Pen Testing，PT）也称为：
-
-黑客活动（Hacking）
-道德黑客（Ethical Hacking）
-白帽黑客（White Hat Hacking）
-
-搭建平台Linux中用于渗透测试的最常用的发行版之一是“BackTrac">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="简介渗透测试是一种合法且授权定位计算机系统，并对其成功实施漏洞攻击的方法，其目的是为了使这些受测系统更加安全。 渗透测试（Penetration Testing或者Pen Testing，PT）也称为：  黑客活动（Hacking） 道德黑客（Ethical Hacking） 白帽黑客（White Hat Hacking）  搭建平台Linux中用于渗透测试的最常用的发行版之一是“BackTrac">
 <meta property="og:type" content="article">
 <meta property="og:title" content="渗透测试方法论">
-<meta property="og:url" content="http://www.saltedfishyang.lol/2015/04/18/penetrationTest/index.html">
-<meta property="og:site_name" content="梦想成为一条咸鱼">
-<meta property="og:description" content="简介渗透测试是一种合法且授权定位计算机系统，并对其成功实施漏洞攻击的方法，其目的是为了使这些受测系统更加安全。
-渗透测试（Penetration Testing或者Pen Testing，PT）也称为：
-
-黑客活动（Hacking）
-道德黑客（Ethical Hacking）
-白帽黑客（White Hat Hacking）
-
-搭建平台Linux中用于渗透测试的最常用的发行版之一是“BackTrac">
-<meta property="og:updated_time" content="2016-11-03T03:20:29.000Z">
+<meta property="og:url" content="https://saltedfish.blue/2015/04/18/penetrationTest/index.html">
+<meta property="og:site_name" content="咸鱼试炼场">
+<meta property="og:description" content="简介渗透测试是一种合法且授权定位计算机系统，并对其成功实施漏洞攻击的方法，其目的是为了使这些受测系统更加安全。 渗透测试（Penetration Testing或者Pen Testing，PT）也称为：  黑客活动（Hacking） 道德黑客（Ethical Hacking） 白帽黑客（White Hat Hacking）  搭建平台Linux中用于渗透测试的最常用的发行版之一是“BackTrac">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2015-04-18T01:47:42.000Z">
+<meta property="article:modified_time" content="2020-12-22T18:14:43.978Z">
+<meta property="article:author" content="blueblue">
+<meta property="article:tag" content="方法论">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="渗透测试方法论">
-<meta name="twitter:description" content="简介渗透测试是一种合法且授权定位计算机系统，并对其成功实施漏洞攻击的方法，其目的是为了使这些受测系统更加安全。
-渗透测试（Penetration Testing或者Pen Testing，PT）也称为：
-
-黑客活动（Hacking）
-道德黑客（Ethical Hacking）
-白帽黑客（White Hat Hacking）
-
-搭建平台Linux中用于渗透测试的最常用的发行版之一是“BackTrac">
-
-
-
-<script type="text/javascript" id="hexo.configuration">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    scheme: 'Mist',
-    sidebar: {"position":"left","display":"post"},
-    fancybox: true,
-    motion: true,
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    }
-  };
-</script>
-
-
-
-
-  <link rel="canonical" href="http://www.saltedfishyang.lol/2015/04/18/penetrationTest/"/>
-
-
-  <title> 渗透测试方法论 | 梦想成为一条咸鱼 </title>
-</head>
-
-<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
-
-  
-
-
-
-  <script type="text/javascript">
-    var _hmt = _hmt || [];
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "//hm.baidu.com/hm.js?cf7740eec585fd3ee544fdca2f778bd3";
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(hm, s);
-    })();
-  </script>
-
-
-
-
-
-
-
-
-  
-  
     
-  
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>渗透测试方法论</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
 
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
-    <div class="headband"></div>
+    <!-- persian styles -->
+    
+      
+<link rel="stylesheet" href="/css/rtl.css">
 
-    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
-      <div class="header-inner"><div class="site-meta ">
-  
+    
+    <!-- rss -->
+    
+    
+<meta name="generator" content="Hexo 5.3.0"></head>
 
-  <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <span class="site-title">梦想成为一条咸鱼</span>
-      <span class="logo-line-after"><i></i></span>
-    </a>
-  </div>
-  <p class="site-subtitle"></p>
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2015/04/18/reconnaissance/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2015/03/12/tinyosPrintf/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://saltedfish.blue/2015/04/18/penetrationTest/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://saltedfish.blue/2015/04/18/penetrationTest/&text=渗透测试方法论"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://saltedfish.blue/2015/04/18/penetrationTest/&title=渗透测试方法论"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://saltedfish.blue/2015/04/18/penetrationTest/&is_video=false&description=渗透测试方法论"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=渗透测试方法论&body=Check out this article: https://saltedfish.blue/2015/04/18/penetrationTest/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://saltedfish.blue/2015/04/18/penetrationTest/&title=渗透测试方法论"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://saltedfish.blue/2015/04/18/penetrationTest/&title=渗透测试方法论"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://saltedfish.blue/2015/04/18/penetrationTest/&title=渗透测试方法论"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://saltedfish.blue/2015/04/18/penetrationTest/&title=渗透测试方法论"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://saltedfish.blue/2015/04/18/penetrationTest/&name=渗透测试方法论&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://saltedfish.blue/2015/04/18/penetrationTest/&t=渗透测试方法论"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-number">1.</span> <span class="toc-text">简介</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%90%AD%E5%BB%BA%E5%B9%B3%E5%8F%B0"><span class="toc-number">1.1.</span> <span class="toc-text">搭建平台</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%BB%91%E5%AE%A2%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%85%A5%E9%97%A8%E6%96%B9%E6%B3%95%E8%AE%BA"><span class="toc-number">2.</span> <span class="toc-text">黑客渗透测试入门方法论</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BE%A6%E5%AF%9F"><span class="toc-number">2.1.</span> <span class="toc-text">侦察</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%AB%E6%8F%8F"><span class="toc-number">2.2.</span> <span class="toc-text">扫描</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8"><span class="toc-number">2.3.</span> <span class="toc-text">漏洞利用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%B4%E6%8C%81%E8%AE%BF%E9%97%AE"><span class="toc-number">2.4.</span> <span class="toc-text">维持访问</span></a></li></ol></li></ol>
+    </div>
+  </span>
 </div>
 
-<div class="site-nav-toggle">
-  <button>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-  </button>
-</div>
-
-<nav class="site-nav">
-  
-
-  
-    <ul id="menu" class="menu">
-      
-        
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-            首页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
-            
-            归档
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
-            
-            分类
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
-            
-            标签
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
-            
-            关于
-          </a>
-        </li>
-      
-
-      
-    </ul>
-  
-
-  
-</nav>
-
- </div>
-    </header>
-
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content">
-            
-
-  <div id="posts" class="posts-expand">
     
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
     
-      <header class="post-header">
+    <h1 class="posttitle" itemprop="name headline">
+        渗透测试方法论
+    </h1>
 
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">blueblue</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2015-04-18T01:47:42.000Z" itemprop="datePublished">2015-04-18</time>
         
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                渗透测试方法论
-              
-            
-          </h1>
-        
+      
+    </div>
 
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-04-18T09:47:42+08:00" content="2015-04-18">
-              2015-04-18
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/渗透测试/" itemprop="url" rel="index">
-                    <span itemprop="name">渗透测试</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/04/18/penetrationTest/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/04/18/penetrationTest/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2015/04/18/penetrationTest/" class="leancloud_visitors" data-flag-title="渗透测试方法论">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
 
       
-      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/">渗透测试</a>
+    </div>
+
 
       
-        <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>渗透测试是一种合法且授权定位计算机系统，并对其成功实施漏洞攻击的方法，其目的是为了使这些受测系统更加安全。</p>
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/%E6%96%B9%E6%B3%95%E8%AE%BA/" rel="tag">方法论</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>渗透测试是一种合法且授权定位计算机系统，并对其成功实施漏洞攻击的方法，其目的是为了使这些受测系统更加安全。</p>
 <p>渗透测试（Penetration Testing或者Pen Testing，PT）也称为：</p>
 <ul>
 <li>黑客活动（Hacking）</li>
 <li>道德黑客（Ethical Hacking）</li>
 <li>白帽黑客（White Hat Hacking）</li>
 </ul>
-<h3 id="搭建平台"><a href="#搭建平台" class="headerlink" title="搭建平台"></a>搭建平台</h3><p>Linux中用于渗透测试的最常用的发行版之一是“BackTrack”（现在，BackTrack已被Kali Linux所代替，BT将不再维护），它预先加载了成百上千种安装并配置好的安全工具。默认情况下，Backtrack并不启用网络功能，因为作为渗透测试人员通常会设法隐藏自己来避免被人发现，计算机一旦接入网络，启动之后就会马上通过广播的方式向整个网络申请DHCP服务器和IP地址，暴露行踪。为了避免这种情况，Backtrack机器的网络接口默认是关闭的。</p>
-<p>  启用网络（kali linux）：【ifconfig用于临时设置，重启失效】<br><code>ifconfig -a</code><br><code>ifconfig eth0 up</code></p>
-<p>  手动配置IP地址：<br><code>ifconfig eth0 [IP] netmask [子网掩码]</code></p>
-<p>  设置网关：<br><code>route add default  gw 网关地址</code><br> <code>route add default dev eth0   //默认路由，将去往未知网络的数据包全部从接口eth0发出去</code></p>
-<p>  使用DHCP分配IP地址：<br><code>dhclient eth0</code></p>
-<h2 id="黑客渗透测试入门方法论"><a href="#黑客渗透测试入门方法论" class="headerlink" title="黑客渗透测试入门方法论"></a>黑客渗透测试入门方法论</h2><h3 id="侦察"><a href="#侦察" class="headerlink" title="侦察"></a>侦察</h3><p>也就是收集信息，在收集目标信息上所花的时间越多，后续阶段的成功率就越高。而这一步骤恰恰是当前整个渗透测试方法体系中最容易被忽略、最不被重视、最易受人误解的一环。</p>
-<h3 id="扫描"><a href="#扫描" class="headerlink" title="扫描"></a>扫描</h3><ul>
+<h2 id="搭建平台"><a href="#搭建平台" class="headerlink" title="搭建平台"></a>搭建平台</h2><p>Linux中用于渗透测试的最常用的发行版之一是“BackTrack”（现在，BackTrack已被Kali Linux所代替，BT将不再维护），它预先加载了成百上千种安装并配置好的安全工具。默认情况下，Backtrack并不启用网络功能，因为作为渗透测试人员通常会设法隐藏自己来避免被人发现，计算机一旦接入网络，启动之后就会马上通过广播的方式向整个网络申请DHCP服务器和IP地址，暴露行踪。为了避免这种情况，Backtrack机器的网络接口默认是关闭的。</p>
+<p>  启用网络（kali linux）：【ifconfig用于临时设置，重启失效】<br><code>  ifconfig -a</code><br><code>  ifconfig eth0 up</code></p>
+<p>  手动配置IP地址：<br><code> ifconfig eth0 [IP] netmask [子网掩码]</code></p>
+<p>  设置网关：<br><code>  route add default  gw 网关地址</code><br> <code>  route add default dev eth0   //默认路由，将去往未知网络的数据包全部从接口eth0发出去</code></p>
+<p>  使用DHCP分配IP地址：<br><code>  dhclient eth0</code></p>
+<h1 id="黑客渗透测试入门方法论"><a href="#黑客渗透测试入门方法论" class="headerlink" title="黑客渗透测试入门方法论"></a>黑客渗透测试入门方法论</h1><h2 id="侦察"><a href="#侦察" class="headerlink" title="侦察"></a>侦察</h2><p>也就是收集信息，在收集目标信息上所花的时间越多，后续阶段的成功率就越高。而这一步骤恰恰是当前整个渗透测试方法体系中最容易被忽略、最不被重视、最易受人误解的一环。</p>
+<h2 id="扫描"><a href="#扫描" class="headerlink" title="扫描"></a>扫描</h2><ul>
 <li>端口扫描</li>
 <li>漏洞扫描</li>
 </ul>
 <p>一旦完成了端口扫描，就拥有了目标的开放端口和可能已开启服务的列表；漏洞扫描用于定位和识别在目标计算机上运行的软件和服务所存在的缺陷。</p>
-<h3 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h3><p>漏洞利用的最终目标是在目标计算机上获得管理员权限（即完全控制权）。</p>
-<h3 id="维持访问"><a href="#维持访问" class="headerlink" title="维持访问"></a>维持访问</h3><p>通常，在漏洞利用阶段提供的攻击载荷只能提供开启系统的临时访问权限，所以需要创建一个可以永久控制目标系统的后门进程。这个后门进程可以让我们以管理员的权限重新开启已经关闭的程序，甚至重启目标计算机。</p>
+<h2 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h2><p>漏洞利用的最终目标是在目标计算机上获得管理员权限（即完全控制权）。</p>
+<h2 id="维持访问"><a href="#维持访问" class="headerlink" title="维持访问"></a>维持访问</h2><p>通常，在漏洞利用阶段提供的攻击载荷只能提供开启系统的临时访问权限，所以需要创建一个可以永久控制目标系统的后门进程。这个后门进程可以让我们以管理员的权限重新开启已经关闭的程序，甚至重启目标计算机。</p>
 
-      
-    </div>
-
-    <div>
-      
-        
-
-      
-    </div>
-
-    <div>
-      
-        
-
-      
-    </div>
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/方法论/" rel="tag">#方法论</a>
-          
-        </div>
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2015/03/12/tinyosPrintf/" rel="next" title="tinyos中Printf的使用">
-                <i class="fa fa-chevron-left"></i> tinyos中Printf的使用
-              </a>
-            
-          </div>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2015/04/18/reconnaissance/" rel="prev" title="渗透测试（2）——侦察">
-                渗透测试（2）——侦察 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </article>
-
-
-
-    <div class="post-spread">
-      
-    </div>
   </div>
+</article>
 
 
-          </div>
-          
 
 
-          
-  <div class="comments" id="comments">
-    
-      <div class="ds-thread" data-thread-key="2015/04/18/penetrationTest/"
-           data-title="渗透测试方法论" data-url="http://www.saltedfishyang.lol/2015/04/18/penetrationTest/">
-      </div>
-    
-  </div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+    <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
+    <div id="gitalk-container"></div>
+    <script type="text/javascript">
+        var gitalk = new Gitalk({
+            clientID: '8de6a3283ebfa806722a',
+            clientSecret: 'fedb363b9a59f3589ed12bd338b75e97a63034f5',
+            id: md5(window.location.pathname),
+            repo: 'vayneYang.github.io',
+            owner: 'vayneYang',
+            admin: 'vayneYang',
+            distractionFreeMode: ''
+        })
+        gitalk.render('gitalk-container')
+    </script>
 
 
-        </div>
+
         
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+        
+      </ul>
     </div>
-  </div>
 
-  <aside id="sidebar" class="sidebar">
-    <div class="sidebar-inner">
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-number">1.</span> <span class="toc-text">简介</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%90%AD%E5%BB%BA%E5%B9%B3%E5%8F%B0"><span class="toc-number">1.1.</span> <span class="toc-text">搭建平台</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%BB%91%E5%AE%A2%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%85%A5%E9%97%A8%E6%96%B9%E6%B3%95%E8%AE%BA"><span class="toc-number">2.</span> <span class="toc-text">黑客渗透测试入门方法论</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BE%A6%E5%AF%9F"><span class="toc-number">2.1.</span> <span class="toc-text">侦察</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%AB%E6%8F%8F"><span class="toc-number">2.2.</span> <span class="toc-text">扫描</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8"><span class="toc-number">2.3.</span> <span class="toc-text">漏洞利用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%B4%E6%8C%81%E8%AE%BF%E9%97%AE"><span class="toc-number">2.4.</span> <span class="toc-text">维持访问</span></a></li></ol></li></ol>
+    </div>
 
-      
-
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
-
-      <section class="site-overview sidebar-panel ">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="https://avatars1.githubusercontent.com/u/10229863?v=3&s=460"
-               alt="机智杨" />
-          <p class="site-author-name" itemprop="name">机智杨</p>
-          <p class="site-description motion-element" itemprop="description"></p>
-        </div>
-        <nav class="site-state motion-element">
-          <div class="site-state-item site-state-posts">
-            <a href="/archives">
-              <span class="site-state-item-count">10</span>
-              <span class="site-state-item-name">日志</span>
-            </a>
-          </div>
-
-          
-            <div class="site-state-item site-state-categories">
-              <a href="/categories">
-                <span class="site-state-item-count">4</span>
-                <span class="site-state-item-name">分类</span>
-              </a>
-            </div>
-          
-
-          
-            <div class="site-state-item site-state-tags">
-              <a href="/tags">
-                <span class="site-state-item-count">11</span>
-                <span class="site-state-item-name">标签</span>
-              </a>
-            </div>
-          
-
-        </nav>
-
-        
-
-        <div class="links-of-author motion-element">
-          
-        </div>
-
-        
-        
-
-        
-        
-
-      </section>
-
-      
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-            
-              
-            
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#搭建平台"><span class="nav-number">1.1.</span> <span class="nav-text">搭建平台</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#黑客渗透测试入门方法论"><span class="nav-number">2.</span> <span class="nav-text">黑客渗透测试入门方法论</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#侦察"><span class="nav-number">2.1.</span> <span class="nav-text">侦察</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#扫描"><span class="nav-number">2.2.</span> <span class="nav-text">扫描</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#漏洞利用"><span class="nav-number">2.3.</span> <span class="nav-text">漏洞利用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#维持访问"><span class="nav-number">2.4.</span> <span class="nav-text">维持访问</span></a></li></ol></li></ol></div>
-            
-          </div>
-        </section>
-      
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://saltedfish.blue/2015/04/18/penetrationTest/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://saltedfish.blue/2015/04/18/penetrationTest/&text=渗透测试方法论"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://saltedfish.blue/2015/04/18/penetrationTest/&title=渗透测试方法论"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://saltedfish.blue/2015/04/18/penetrationTest/&is_video=false&description=渗透测试方法论"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=渗透测试方法论&body=Check out this article: https://saltedfish.blue/2015/04/18/penetrationTest/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://saltedfish.blue/2015/04/18/penetrationTest/&title=渗透测试方法论"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://saltedfish.blue/2015/04/18/penetrationTest/&title=渗透测试方法论"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://saltedfish.blue/2015/04/18/penetrationTest/&title=渗透测试方法论"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://saltedfish.blue/2015/04/18/penetrationTest/&title=渗透测试方法论"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://saltedfish.blue/2015/04/18/penetrationTest/&name=渗透测试方法论&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://saltedfish.blue/2015/04/18/penetrationTest/&t=渗透测试方法论"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
 
     </div>
-  </aside>
 
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
 
-        
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright" >
-  
-  &copy; 
-  <span itemprop="copyrightYear">2017</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">机智杨</span>
-</div>
-
-<div class="powered-by">
-  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
-</div>
-
-<div class="theme-info">
-  主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
-  </a>
+  </div>
 </div>
 
         
-
-        
-      </div>
-    </footer>
-
-    <div class="back-to-top">
-      <i class="fa fa-arrow-up"></i>
-    </div>
-  </div>
-
-  
-
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
-</script>
-
-
-
-
-
-
-
-
-
-  
-
-
-
-  
-  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
-
-
-
-  
-  
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
-
-
-
-  
-
-  
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
     
+    
+    2016-2020
+    blueblue
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+
+    <!-- jquery -->
+
+<script src="/lib/jquery/jquery.min.js"></script>
+
+
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+<!-- clipboard -->
+
   
+<script src="/lib/clipboard/clipboard.min.js"></script>
 
   <script type="text/javascript">
-    var duoshuoQuery = {short_name:"saltedfish"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.id = 'duoshuo-script';
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
-
-  
-    
-    <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
-    <script src="/js/src/hook-duoshuo.js"></script>
-  
-
-
-
-
-
-
-  
-  
-
-  
-
-  
-
-  
-  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
-  <script>AV.initialize("3n4r5zynQO8fHDBzlIbKbhgF-gzGzoHsz", "Na2XuOIsifGc7Wpwug1zCP5v");</script>
-  <script>
-    function showTime(Counter) {
-      var query = new AV.Query(Counter);
-      var entries = [];
-      var $visitors = $(".leancloud_visitors");
-
-      $visitors.each(function () {
-        entries.push( $(this).attr("id").trim() );
-      });
-
-      query.containedIn('url', entries);
-      query.find()
-        .done(function (results) {
-          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
-
-          if (results.length === 0) {
-            $visitors.find(COUNT_CONTAINER_REF).text(0);
-            return;
-          }
-
-          for (var i = 0; i < results.length; i++) {
-            var item = results[i];
-            var url = item.get('url');
-            var time = item.get('time');
-            var element = document.getElementById(url);
-
-            $(element).find(COUNT_CONTAINER_REF).text(time);
-          }
-          for(var i = 0; i < entries.length; i++) {
-            var url = entries[i];
-            var element = document.getElementById(url);
-            var countSpan = $(element).find(COUNT_CONTAINER_REF);
-            if( countSpan.text() == '') {
-              countSpan.text(0);
-            }
-          }
-        })
-        .fail(function (object, error) {
-          console.log("Error: " + error.code + " " + error.message);
-        });
-    }
-
-    function addCount(Counter) {
-      var $visitors = $(".leancloud_visitors");
-      var url = $visitors.attr('id').trim();
-      var title = $visitors.attr('data-flag-title').trim();
-      var query = new AV.Query(Counter);
-
-      query.equalTo("url", url);
-      query.find({
-        success: function(results) {
-          if (results.length > 0) {
-            var counter = results[0];
-            counter.fetchWhenSave(true);
-            counter.increment("time");
-            counter.save(null, {
-              success: function(counter) {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(counter.get('time'));
-              },
-              error: function(counter, error) {
-                console.log('Failed to save Visitor num, with error message: ' + error.message);
-              }
-            });
-          } else {
-            var newcounter = new Counter();
-            /* Set ACL */
-            var acl = new AV.ACL();
-            acl.setPublicReadAccess(true);
-            acl.setPublicWriteAccess(true);
-            newcounter.setACL(acl);
-            /* End Set ACL */
-            newcounter.set("title", title);
-            newcounter.set("url", url);
-            newcounter.set("time", 1);
-            newcounter.save(null, {
-              success: function(newcounter) {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
-              },
-              error: function(newcounter, error) {
-                console.log('Failed to create');
-              }
-            });
-          }
-        },
-        error: function(error) {
-          console.log('Error:' + error.code + " " + error.message);
-        }
-      });
-    }
-
-    $(function() {
-      var Counter = AV.Object.extend("Counter");
-      if ($('.leancloud_visitors').length == 1) {
-        addCount(Counter);
-      } else if ($('.post-title-link').length > 1) {
-        showTime(Counter);
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
       }
     });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功!");
+      e.clearSelection();
+    })
+  })
   </script>
 
 
+<script src="/js/main.js"></script>
 
-  
+<!-- search -->
 
-  
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+  <script type="text/javascript">
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?05cf61e6ffb961295992c8d4f08c74fe";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+        })();
+        </script>
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
 
 
 </body>

@@ -1,362 +1,173 @@
-<!doctype html>
-
-
-
-  
-
-
-<html class="theme-next mist use-motion">
+<!DOCTYPE html>
+<html lang=zh>
 <head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
-
-
-
-
-  
-  
-  
-  
-
-  
-    
-    
-  
-
-  
-
-  
-
-  
-
-  
-    
-      
-    
-
-    
-  
-
-  
-    
-    
-    <link href="//fonts.googleapis.com/css?family=STFangsong:300,300italic,400,400italic,700,700italic|Monaco:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
-
-
-
-
-
-
-<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="网络隐身," />
-
-
-
-
-
-
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
-
-
-
-
-
-
-<meta name="description" content="在渗透测试中的必要性
-要访问的资源可能是非法的恶意资源
-尽量隐藏渗透测试过程中的测试或攻击来源
-
-对于一个渗透测试人员来说，一个虚拟的IP地址对于模拟一个真实的攻击者来说是非常重要的。例如在侦察阶段，主动侦察会暴露自己的行迹，一个熟练的攻击者不会使用相同的IP来扫描一个网站；端口扫描阶段，不断地扫描目标网站的服务类型必定也会引起管理员的注意。攻击者会使用一些假IP来扫描目标，然后使用其他IP来执行">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="在渗透测试中的必要性 要访问的资源可能是非法的恶意资源 尽量隐藏渗透测试过程中的测试或攻击来源  对于一个渗透测试人员来说，一个虚拟的IP地址对于模拟一个真实的攻击者来说是非常重要的。例如在侦察阶段，主动侦察会暴露自己的行迹，一个熟练的攻击者不会使用相同的IP来扫描一个网站；端口扫描阶段，不断地扫描目标网站的服务类型必定也会引起管理员的注意。攻击者会使用一些假IP来扫描目标，然后使用其他IP来执行">
 <meta property="og:type" content="article">
 <meta property="og:title" content="网络隐身和洋葱路由">
-<meta property="og:url" content="http://www.saltedfishyang.lol/2015/04/18/networkhidding/index.html">
-<meta property="og:site_name" content="梦想成为一条咸鱼">
-<meta property="og:description" content="在渗透测试中的必要性
-要访问的资源可能是非法的恶意资源
-尽量隐藏渗透测试过程中的测试或攻击来源
-
-对于一个渗透测试人员来说，一个虚拟的IP地址对于模拟一个真实的攻击者来说是非常重要的。例如在侦察阶段，主动侦察会暴露自己的行迹，一个熟练的攻击者不会使用相同的IP来扫描一个网站；端口扫描阶段，不断地扫描目标网站的服务类型必定也会引起管理员的注意。攻击者会使用一些假IP来扫描目标，然后使用其他IP来执行">
-<meta property="og:updated_time" content="2016-11-03T03:09:10.000Z">
+<meta property="og:url" content="https://saltedfish.blue/2015/04/18/networkhidding/index.html">
+<meta property="og:site_name" content="咸鱼试炼场">
+<meta property="og:description" content="在渗透测试中的必要性 要访问的资源可能是非法的恶意资源 尽量隐藏渗透测试过程中的测试或攻击来源  对于一个渗透测试人员来说，一个虚拟的IP地址对于模拟一个真实的攻击者来说是非常重要的。例如在侦察阶段，主动侦察会暴露自己的行迹，一个熟练的攻击者不会使用相同的IP来扫描一个网站；端口扫描阶段，不断地扫描目标网站的服务类型必定也会引起管理员的注意。攻击者会使用一些假IP来扫描目标，然后使用其他IP来执行">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2015-04-18T08:31:26.000Z">
+<meta property="article:modified_time" content="2020-12-22T18:11:58.114Z">
+<meta property="article:author" content="blueblue">
+<meta property="article:tag" content="网络隐身">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="网络隐身和洋葱路由">
-<meta name="twitter:description" content="在渗透测试中的必要性
-要访问的资源可能是非法的恶意资源
-尽量隐藏渗透测试过程中的测试或攻击来源
-
-对于一个渗透测试人员来说，一个虚拟的IP地址对于模拟一个真实的攻击者来说是非常重要的。例如在侦察阶段，主动侦察会暴露自己的行迹，一个熟练的攻击者不会使用相同的IP来扫描一个网站；端口扫描阶段，不断地扫描目标网站的服务类型必定也会引起管理员的注意。攻击者会使用一些假IP来扫描目标，然后使用其他IP来执行">
-
-
-
-<script type="text/javascript" id="hexo.configuration">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    scheme: 'Mist',
-    sidebar: {"position":"left","display":"post"},
-    fancybox: true,
-    motion: true,
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    }
-  };
-</script>
-
-
-
-
-  <link rel="canonical" href="http://www.saltedfishyang.lol/2015/04/18/networkhidding/"/>
-
-
-  <title> 网络隐身和洋葱路由 | 梦想成为一条咸鱼 </title>
-</head>
-
-<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
-
-  
-
-
-
-  <script type="text/javascript">
-    var _hmt = _hmt || [];
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "//hm.baidu.com/hm.js?cf7740eec585fd3ee544fdca2f778bd3";
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(hm, s);
-    })();
-  </script>
-
-
-
-
-
-
-
-
-  
-  
     
-  
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>网络隐身和洋葱路由</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
 
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
-    <div class="headband"></div>
+    <!-- persian styles -->
+    
+      
+<link rel="stylesheet" href="/css/rtl.css">
 
-    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
-      <div class="header-inner"><div class="site-meta ">
-  
+    
+    <!-- rss -->
+    
+    
+<meta name="generator" content="Hexo 5.3.0"></head>
 
-  <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <span class="site-title">梦想成为一条咸鱼</span>
-      <span class="logo-line-after"><i></i></span>
-    </a>
-  </div>
-  <p class="site-subtitle"></p>
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2016/04/03/frequently-used-command/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2015/04/18/reconnaissance/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://saltedfish.blue/2015/04/18/networkhidding/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://saltedfish.blue/2015/04/18/networkhidding/&text=网络隐身和洋葱路由"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://saltedfish.blue/2015/04/18/networkhidding/&title=网络隐身和洋葱路由"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://saltedfish.blue/2015/04/18/networkhidding/&is_video=false&description=网络隐身和洋葱路由"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=网络隐身和洋葱路由&body=Check out this article: https://saltedfish.blue/2015/04/18/networkhidding/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://saltedfish.blue/2015/04/18/networkhidding/&title=网络隐身和洋葱路由"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://saltedfish.blue/2015/04/18/networkhidding/&title=网络隐身和洋葱路由"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://saltedfish.blue/2015/04/18/networkhidding/&title=网络隐身和洋葱路由"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://saltedfish.blue/2015/04/18/networkhidding/&title=网络隐身和洋葱路由"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://saltedfish.blue/2015/04/18/networkhidding/&name=网络隐身和洋葱路由&description=&lt;h1 id=&#34;在渗透测试中的必要性&#34;&gt;&lt;a href=&#34;#在渗透测试中的必要性&#34; class=&#34;headerlink&#34; title=&#34;在渗透测试中的必要性&#34;&gt;&lt;/a&gt;在渗透测试中的必要性&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;要访问的资源可能是非法的恶意资源&lt;/li&gt;
+&lt;li&gt;尽量隐藏渗透测试过程中的测试或攻击来源&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;对于一个渗透测试人员来说，一个虚拟的IP地址对于模拟一个真实的攻击者来说是非常重要的。例如在侦察阶段，主动侦察会暴露自己的行迹，一个熟练的攻击者不会使用相同的IP来扫描一个网站；端口扫描阶段，不断地扫描目标网站的服务类型必定也会引起管理员的注意。攻击者会使用一些假IP来扫描目标，然后使用其他IP来执行渗透。&lt;/p&gt;
+&lt;h1 id=&#34;实现网络隐身的方法&#34;&gt;&lt;a href=&#34;#实现网络隐身的方法&#34; class=&#34;headerlink&#34; title=&#34;实现网络隐身的方法&#34;&gt;&lt;/a&gt;实现网络隐身的方法&lt;/h1&gt;&lt;h3 id=&#34;设置代理跳板&#34;&gt;&lt;a href=&#34;#设置代理跳板&#34; class=&#34;headerlink&#34; title=&#34;设置代理跳板&#34;&gt;&lt;/a&gt;设置代理跳板&lt;/h3&gt;&lt;h4 id=&#34;什么是“代理”&#34;&gt;&lt;a href=&#34;#什么是“代理”&#34; class=&#34;headerlink&#34; title=&#34;什么是“代理”&#34;&gt;&lt;/a&gt;什么是“代理”&lt;/h4&gt;&lt;p&gt;代理（Proxy），也称网络代理，是一种特殊的网络服务，允许一个网络终端（一般为客户端）通过这个服务与另一个网络终端（一般为服务器）进行非直接的连接。提供代理服务的电脑系统或其它类型的网络终端称为代理服务器。接入该服务器后可让计算机“脱离”自己所在的网络范围，本机的上网流量全部通过代理服务器发送，因此 IP 地址得以遮蔽，所有上网流量看上去似乎都来自代理服务器。&lt;/p&gt;"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://saltedfish.blue/2015/04/18/networkhidding/&t=网络隐身和洋葱路由"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9C%A8%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E4%B8%AD%E7%9A%84%E5%BF%85%E8%A6%81%E6%80%A7"><span class="toc-number">1.</span> <span class="toc-text">在渗透测试中的必要性</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E7%BD%91%E7%BB%9C%E9%9A%90%E8%BA%AB%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-number">2.</span> <span class="toc-text">实现网络隐身的方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86%E8%B7%B3%E6%9D%BF"><span class="toc-number">2.0.1.</span> <span class="toc-text">设置代理跳板</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E2%80%9C%E4%BB%A3%E7%90%86%E2%80%9D"><span class="toc-number">2.0.1.1.</span> <span class="toc-text">什么是“代理”</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8A%9F%E8%83%BD"><span class="toc-number">2.0.1.2.</span> <span class="toc-text">功能</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%A3%E7%90%86%E7%9A%84%E4%B8%BB%E8%A6%81%E5%88%86%E7%B1%BB"><span class="toc-number">2.0.1.3.</span> <span class="toc-text">代理的主要分类</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%A0%B9%E6%8D%AE%E5%8D%8F%E8%AE%AE%E5%8C%BA%E5%88%86%EF%BC%9A"><span class="toc-number">2.0.1.3.1.</span> <span class="toc-text">根据协议区分：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%A0%B9%E6%8D%AE%E5%8C%BF%E5%90%8D%E7%A8%8B%E5%BA%A6%E5%8C%BA%E5%88%86%EF%BC%9A"><span class="toc-number">2.0.1.3.2.</span> <span class="toc-text">根据匿名程度区分：</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Tor%EF%BC%88The-Onion-Router%EF%BC%89"><span class="toc-number">2.0.1.4.</span> <span class="toc-text">Tor（The Onion Router）</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E5%92%8C%E8%AE%BE%E7%BD%AEPrivoxy"><span class="toc-number">2.0.1.4.1.</span> <span class="toc-text">安装和设置Privoxy</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E5%92%8C%E8%AE%BE%E7%BD%AETor"><span class="toc-number">2.0.1.4.2.</span> <span class="toc-text">安装和设置Tor</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEPrivoxy%E5%B0%86%E4%BB%A3%E7%90%86%E6%8C%87%E5%90%91Tor"><span class="toc-number">2.0.1.4.3.</span> <span class="toc-text">配置Privoxy将代理指向Tor</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%80%9A%E8%BF%87Privoxy%E6%9D%A5%E4%B8%8A%E7%BD%91"><span class="toc-number">2.0.1.4.4.</span> <span class="toc-text">通过Privoxy来上网</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B8%85%E9%99%A4%E7%B3%BB%E7%BB%9F%E6%97%A5%E5%BF%97"><span class="toc-number">2.0.2.</span> <span class="toc-text">清除系统日志</span></a></li></ol></li></ol></li></ol>
+    </div>
+  </span>
 </div>
 
-<div class="site-nav-toggle">
-  <button>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-  </button>
-</div>
-
-<nav class="site-nav">
-  
-
-  
-    <ul id="menu" class="menu">
-      
-        
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-            首页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
-            
-            归档
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
-            
-            分类
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
-            
-            标签
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
-            
-            关于
-          </a>
-        </li>
-      
-
-      
-    </ul>
-  
-
-  
-</nav>
-
- </div>
-    </header>
-
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content">
-            
-
-  <div id="posts" class="posts-expand">
     
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
     
-      <header class="post-header">
+    <h1 class="posttitle" itemprop="name headline">
+        网络隐身和洋葱路由
+    </h1>
 
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">blueblue</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2015-04-18T08:31:26.000Z" itemprop="datePublished">2015-04-18</time>
         
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                网络隐身和洋葱路由
-              
-            
-          </h1>
-        
+      
+    </div>
 
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-04-18T16:31:26+08:00" content="2015-04-18">
-              2015-04-18
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/渗透测试/" itemprop="url" rel="index">
-                    <span itemprop="name">渗透测试</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/04/18/networkhidding/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/04/18/networkhidding/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2015/04/18/networkhidding/" class="leancloud_visitors" data-flag-title="网络隐身和洋葱路由">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
 
       
-      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/">渗透测试</a>
+    </div>
+
 
       
-        <h2 id="在渗透测试中的必要性"><a href="#在渗透测试中的必要性" class="headerlink" title="在渗透测试中的必要性"></a>在渗透测试中的必要性</h2><ul>
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/%E7%BD%91%E7%BB%9C%E9%9A%90%E8%BA%AB/" rel="tag">网络隐身</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h1 id="在渗透测试中的必要性"><a href="#在渗透测试中的必要性" class="headerlink" title="在渗透测试中的必要性"></a>在渗透测试中的必要性</h1><ul>
 <li>要访问的资源可能是非法的恶意资源</li>
 <li>尽量隐藏渗透测试过程中的测试或攻击来源</li>
 </ul>
 <p>对于一个渗透测试人员来说，一个虚拟的IP地址对于模拟一个真实的攻击者来说是非常重要的。例如在侦察阶段，主动侦察会暴露自己的行迹，一个熟练的攻击者不会使用相同的IP来扫描一个网站；端口扫描阶段，不断地扫描目标网站的服务类型必定也会引起管理员的注意。攻击者会使用一些假IP来扫描目标，然后使用其他IP来执行渗透。</p>
-<h2 id="实现网络隐身的方法"><a href="#实现网络隐身的方法" class="headerlink" title="实现网络隐身的方法"></a>实现网络隐身的方法</h2><h3 id="设置代理跳板"><a href="#设置代理跳板" class="headerlink" title="设置代理跳板"></a>设置代理跳板</h3><h4 id="什么是“代理”"><a href="#什么是“代理”" class="headerlink" title="什么是“代理”"></a>什么是“代理”</h4><p>代理（Proxy），也称网络代理，是一种特殊的网络服务，允许一个网络终端（一般为客户端）通过这个服务与另一个网络终端（一般为服务器）进行非直接的连接。提供代理服务的电脑系统或其它类型的网络终端称为代理服务器。接入该服务器后可让计算机“脱离”自己所在的网络范围，本机的上网流量全部通过代理服务器发送，因此 IP 地址得以遮蔽，所有上网流量看上去似乎都来自代理服务器。</p>
+<h1 id="实现网络隐身的方法"><a href="#实现网络隐身的方法" class="headerlink" title="实现网络隐身的方法"></a>实现网络隐身的方法</h1><h3 id="设置代理跳板"><a href="#设置代理跳板" class="headerlink" title="设置代理跳板"></a>设置代理跳板</h3><h4 id="什么是“代理”"><a href="#什么是“代理”" class="headerlink" title="什么是“代理”"></a>什么是“代理”</h4><p>代理（Proxy），也称网络代理，是一种特殊的网络服务，允许一个网络终端（一般为客户端）通过这个服务与另一个网络终端（一般为服务器）进行非直接的连接。提供代理服务的电脑系统或其它类型的网络终端称为代理服务器。接入该服务器后可让计算机“脱离”自己所在的网络范围，本机的上网流量全部通过代理服务器发送，因此 IP 地址得以遮蔽，所有上网流量看上去似乎都来自代理服务器。</p>
 <a id="more"></a>
+
 <p>一个完整的代理请求过程为：</p>
 <p>客户端首先与代理服务器建立连接，接着根据代理服务器所使用的代理协议【Sock4/5、HTTP】，请求对目标服务器建立连接、或者获得目标服务器的指定资源（如：文件）。在后一种情况中，代理服务器可能对目标服务器的资源下載至本地缓存，如果客户端所要获取的资源在代理服务器的缓存之中，则代理服务器并不会向目标服务器发送请求，而是直接返回缓存了的资源。一些代理协议允许代理服务器改变客户端的原始请求、目标服务器的原始响应，以满足代理协议的需要。代理服务器的选项和设置在计算机程序中，通常包括一个“防火墙”，允许用户输入代理地址，它会遮盖他们的网络活动，可以允许绕过互联网过滤实现网络访问。【来自Wiki】</p>
 <h4 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h4><ol>
@@ -414,423 +225,170 @@
 <h4 id="Tor（The-Onion-Router）"><a href="#Tor（The-Onion-Router）" class="headerlink" title="Tor（The Onion Router）"></a>Tor（The Onion Router）</h4><p>Tor的全称是“The Onion Router”。兼顾速度与安全性，是目前最流行、最受开发者欢迎的网络匿名访问的利器。这个免费、开源的程序可以给网络流量进行三重加密，并将用户流量在世界各地的电脑终端里跳跃传递，这样就很难去追踪它的来源。大部分的Tor用户只把它作为一个匿名浏览网页的工具，不过实际上它潜力十足：Tor软件可以在操作系统后台运行，创建一个代理链接将用户连接到Tor网络。随着越来越多的软件甚至操作系统都开始允许用户选择通过Tor链接发送所有流量，这使得你几乎可以用任何类型的在线服务来掩盖自己的身份，有效地保证了安全性。</p>
 <p>基本步骤：</p>
 <h5 id="安装和设置Privoxy"><a href="#安装和设置Privoxy" class="headerlink" title="安装和设置Privoxy"></a>安装和设置Privoxy</h5><h5 id="安装和设置Tor"><a href="#安装和设置Tor" class="headerlink" title="安装和设置Tor"></a>安装和设置Tor</h5><h5 id="配置Privoxy将代理指向Tor"><a href="#配置Privoxy将代理指向Tor" class="headerlink" title="配置Privoxy将代理指向Tor"></a>配置Privoxy将代理指向Tor</h5><h5 id="通过Privoxy来上网"><a href="#通过Privoxy来上网" class="headerlink" title="通过Privoxy来上网"></a>通过Privoxy来上网</h5><h3 id="清除系统日志"><a href="#清除系统日志" class="headerlink" title="清除系统日志"></a>清除系统日志</h3>
-      
-    </div>
-
-    <div>
-      
-        
-
-      
-    </div>
-
-    <div>
-      
-        
-
-      
-    </div>
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/网络隐身/" rel="tag">#网络隐身</a>
-          
-        </div>
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2015/04/18/reconnaissance/" rel="next" title="渗透测试（2）——侦察">
-                <i class="fa fa-chevron-left"></i> 渗透测试（2）——侦察
-              </a>
-            
-          </div>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/04/03/frequently-used-command/" rel="prev" title="frequently-used command">
-                frequently-used command <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </article>
-
-
-
-    <div class="post-spread">
-      
-    </div>
   </div>
+</article>
 
 
-          </div>
-          
 
 
-          
-  <div class="comments" id="comments">
-    
-      <div class="ds-thread" data-thread-key="2015/04/18/networkhidding/"
-           data-title="网络隐身和洋葱路由" data-url="http://www.saltedfishyang.lol/2015/04/18/networkhidding/">
-      </div>
-    
-  </div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+    <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
+    <div id="gitalk-container"></div>
+    <script type="text/javascript">
+        var gitalk = new Gitalk({
+            clientID: '8de6a3283ebfa806722a',
+            clientSecret: 'fedb363b9a59f3589ed12bd338b75e97a63034f5',
+            id: md5(window.location.pathname),
+            repo: 'vayneYang.github.io',
+            owner: 'vayneYang',
+            admin: 'vayneYang',
+            distractionFreeMode: ''
+        })
+        gitalk.render('gitalk-container')
+    </script>
 
 
-        </div>
+
         
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+        
+      </ul>
     </div>
-  </div>
 
-  <aside id="sidebar" class="sidebar">
-    <div class="sidebar-inner">
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9C%A8%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E4%B8%AD%E7%9A%84%E5%BF%85%E8%A6%81%E6%80%A7"><span class="toc-number">1.</span> <span class="toc-text">在渗透测试中的必要性</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E7%BD%91%E7%BB%9C%E9%9A%90%E8%BA%AB%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-number">2.</span> <span class="toc-text">实现网络隐身的方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86%E8%B7%B3%E6%9D%BF"><span class="toc-number">2.0.1.</span> <span class="toc-text">设置代理跳板</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E2%80%9C%E4%BB%A3%E7%90%86%E2%80%9D"><span class="toc-number">2.0.1.1.</span> <span class="toc-text">什么是“代理”</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8A%9F%E8%83%BD"><span class="toc-number">2.0.1.2.</span> <span class="toc-text">功能</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%A3%E7%90%86%E7%9A%84%E4%B8%BB%E8%A6%81%E5%88%86%E7%B1%BB"><span class="toc-number">2.0.1.3.</span> <span class="toc-text">代理的主要分类</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%A0%B9%E6%8D%AE%E5%8D%8F%E8%AE%AE%E5%8C%BA%E5%88%86%EF%BC%9A"><span class="toc-number">2.0.1.3.1.</span> <span class="toc-text">根据协议区分：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%A0%B9%E6%8D%AE%E5%8C%BF%E5%90%8D%E7%A8%8B%E5%BA%A6%E5%8C%BA%E5%88%86%EF%BC%9A"><span class="toc-number">2.0.1.3.2.</span> <span class="toc-text">根据匿名程度区分：</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Tor%EF%BC%88The-Onion-Router%EF%BC%89"><span class="toc-number">2.0.1.4.</span> <span class="toc-text">Tor（The Onion Router）</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E5%92%8C%E8%AE%BE%E7%BD%AEPrivoxy"><span class="toc-number">2.0.1.4.1.</span> <span class="toc-text">安装和设置Privoxy</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E5%92%8C%E8%AE%BE%E7%BD%AETor"><span class="toc-number">2.0.1.4.2.</span> <span class="toc-text">安装和设置Tor</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEPrivoxy%E5%B0%86%E4%BB%A3%E7%90%86%E6%8C%87%E5%90%91Tor"><span class="toc-number">2.0.1.4.3.</span> <span class="toc-text">配置Privoxy将代理指向Tor</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%80%9A%E8%BF%87Privoxy%E6%9D%A5%E4%B8%8A%E7%BD%91"><span class="toc-number">2.0.1.4.4.</span> <span class="toc-text">通过Privoxy来上网</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B8%85%E9%99%A4%E7%B3%BB%E7%BB%9F%E6%97%A5%E5%BF%97"><span class="toc-number">2.0.2.</span> <span class="toc-text">清除系统日志</span></a></li></ol></li></ol></li></ol>
+    </div>
 
-      
-
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
-
-      <section class="site-overview sidebar-panel ">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="https://avatars1.githubusercontent.com/u/10229863?v=3&s=460"
-               alt="机智杨" />
-          <p class="site-author-name" itemprop="name">机智杨</p>
-          <p class="site-description motion-element" itemprop="description"></p>
-        </div>
-        <nav class="site-state motion-element">
-          <div class="site-state-item site-state-posts">
-            <a href="/archives">
-              <span class="site-state-item-count">10</span>
-              <span class="site-state-item-name">日志</span>
-            </a>
-          </div>
-
-          
-            <div class="site-state-item site-state-categories">
-              <a href="/categories">
-                <span class="site-state-item-count">4</span>
-                <span class="site-state-item-name">分类</span>
-              </a>
-            </div>
-          
-
-          
-            <div class="site-state-item site-state-tags">
-              <a href="/tags">
-                <span class="site-state-item-count">11</span>
-                <span class="site-state-item-name">标签</span>
-              </a>
-            </div>
-          
-
-        </nav>
-
-        
-
-        <div class="links-of-author motion-element">
-          
-        </div>
-
-        
-        
-
-        
-        
-
-      </section>
-
-      
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-            
-              
-            
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#在渗透测试中的必要性"><span class="nav-number">1.</span> <span class="nav-text">在渗透测试中的必要性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现网络隐身的方法"><span class="nav-number">2.</span> <span class="nav-text">实现网络隐身的方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#设置代理跳板"><span class="nav-number">2.1.</span> <span class="nav-text">设置代理跳板</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#什么是“代理”"><span class="nav-number">2.1.1.</span> <span class="nav-text">什么是“代理”</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#功能"><span class="nav-number">2.1.2.</span> <span class="nav-text">功能</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#代理的主要分类"><span class="nav-number">2.1.3.</span> <span class="nav-text">代理的主要分类</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#根据协议区分："><span class="nav-number">2.1.3.1.</span> <span class="nav-text">根据协议区分：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#根据匿名程度区分："><span class="nav-number">2.1.3.2.</span> <span class="nav-text">根据匿名程度区分：</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Tor（The-Onion-Router）"><span class="nav-number">2.1.4.</span> <span class="nav-text">Tor（The Onion Router）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#安装和设置Privoxy"><span class="nav-number">2.1.4.1.</span> <span class="nav-text">安装和设置Privoxy</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#安装和设置Tor"><span class="nav-number">2.1.4.2.</span> <span class="nav-text">安装和设置Tor</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#配置Privoxy将代理指向Tor"><span class="nav-number">2.1.4.3.</span> <span class="nav-text">配置Privoxy将代理指向Tor</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#通过Privoxy来上网"><span class="nav-number">2.1.4.4.</span> <span class="nav-text">通过Privoxy来上网</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#清除系统日志"><span class="nav-number">2.2.</span> <span class="nav-text">清除系统日志</span></a></li></ol></li></ol></div>
-            
-          </div>
-        </section>
-      
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://saltedfish.blue/2015/04/18/networkhidding/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://saltedfish.blue/2015/04/18/networkhidding/&text=网络隐身和洋葱路由"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://saltedfish.blue/2015/04/18/networkhidding/&title=网络隐身和洋葱路由"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://saltedfish.blue/2015/04/18/networkhidding/&is_video=false&description=网络隐身和洋葱路由"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=网络隐身和洋葱路由&body=Check out this article: https://saltedfish.blue/2015/04/18/networkhidding/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://saltedfish.blue/2015/04/18/networkhidding/&title=网络隐身和洋葱路由"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://saltedfish.blue/2015/04/18/networkhidding/&title=网络隐身和洋葱路由"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://saltedfish.blue/2015/04/18/networkhidding/&title=网络隐身和洋葱路由"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://saltedfish.blue/2015/04/18/networkhidding/&title=网络隐身和洋葱路由"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://saltedfish.blue/2015/04/18/networkhidding/&name=网络隐身和洋葱路由&description=&lt;h1 id=&#34;在渗透测试中的必要性&#34;&gt;&lt;a href=&#34;#在渗透测试中的必要性&#34; class=&#34;headerlink&#34; title=&#34;在渗透测试中的必要性&#34;&gt;&lt;/a&gt;在渗透测试中的必要性&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;要访问的资源可能是非法的恶意资源&lt;/li&gt;
+&lt;li&gt;尽量隐藏渗透测试过程中的测试或攻击来源&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;对于一个渗透测试人员来说，一个虚拟的IP地址对于模拟一个真实的攻击者来说是非常重要的。例如在侦察阶段，主动侦察会暴露自己的行迹，一个熟练的攻击者不会使用相同的IP来扫描一个网站；端口扫描阶段，不断地扫描目标网站的服务类型必定也会引起管理员的注意。攻击者会使用一些假IP来扫描目标，然后使用其他IP来执行渗透。&lt;/p&gt;
+&lt;h1 id=&#34;实现网络隐身的方法&#34;&gt;&lt;a href=&#34;#实现网络隐身的方法&#34; class=&#34;headerlink&#34; title=&#34;实现网络隐身的方法&#34;&gt;&lt;/a&gt;实现网络隐身的方法&lt;/h1&gt;&lt;h3 id=&#34;设置代理跳板&#34;&gt;&lt;a href=&#34;#设置代理跳板&#34; class=&#34;headerlink&#34; title=&#34;设置代理跳板&#34;&gt;&lt;/a&gt;设置代理跳板&lt;/h3&gt;&lt;h4 id=&#34;什么是“代理”&#34;&gt;&lt;a href=&#34;#什么是“代理”&#34; class=&#34;headerlink&#34; title=&#34;什么是“代理”&#34;&gt;&lt;/a&gt;什么是“代理”&lt;/h4&gt;&lt;p&gt;代理（Proxy），也称网络代理，是一种特殊的网络服务，允许一个网络终端（一般为客户端）通过这个服务与另一个网络终端（一般为服务器）进行非直接的连接。提供代理服务的电脑系统或其它类型的网络终端称为代理服务器。接入该服务器后可让计算机“脱离”自己所在的网络范围，本机的上网流量全部通过代理服务器发送，因此 IP 地址得以遮蔽，所有上网流量看上去似乎都来自代理服务器。&lt;/p&gt;"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://saltedfish.blue/2015/04/18/networkhidding/&t=网络隐身和洋葱路由"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
 
     </div>
-  </aside>
 
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
 
-        
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright" >
-  
-  &copy; 
-  <span itemprop="copyrightYear">2017</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">机智杨</span>
-</div>
-
-<div class="powered-by">
-  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
-</div>
-
-<div class="theme-info">
-  主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
-  </a>
+  </div>
 </div>
 
         
-
-        
-      </div>
-    </footer>
-
-    <div class="back-to-top">
-      <i class="fa fa-arrow-up"></i>
-    </div>
-  </div>
-
-  
-
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
-</script>
-
-
-
-
-
-
-
-
-
-  
-
-
-
-  
-  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
-
-
-
-  
-  
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
-
-
-
-  
-
-  
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
     
+    
+    2016-2020
+    blueblue
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+
+    <!-- jquery -->
+
+<script src="/lib/jquery/jquery.min.js"></script>
+
+
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+<!-- clipboard -->
+
   
+<script src="/lib/clipboard/clipboard.min.js"></script>
 
   <script type="text/javascript">
-    var duoshuoQuery = {short_name:"saltedfish"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.id = 'duoshuo-script';
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
-
-  
-    
-    <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
-    <script src="/js/src/hook-duoshuo.js"></script>
-  
-
-
-
-
-
-
-  
-  
-
-  
-
-  
-
-  
-  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
-  <script>AV.initialize("3n4r5zynQO8fHDBzlIbKbhgF-gzGzoHsz", "Na2XuOIsifGc7Wpwug1zCP5v");</script>
-  <script>
-    function showTime(Counter) {
-      var query = new AV.Query(Counter);
-      var entries = [];
-      var $visitors = $(".leancloud_visitors");
-
-      $visitors.each(function () {
-        entries.push( $(this).attr("id").trim() );
-      });
-
-      query.containedIn('url', entries);
-      query.find()
-        .done(function (results) {
-          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
-
-          if (results.length === 0) {
-            $visitors.find(COUNT_CONTAINER_REF).text(0);
-            return;
-          }
-
-          for (var i = 0; i < results.length; i++) {
-            var item = results[i];
-            var url = item.get('url');
-            var time = item.get('time');
-            var element = document.getElementById(url);
-
-            $(element).find(COUNT_CONTAINER_REF).text(time);
-          }
-          for(var i = 0; i < entries.length; i++) {
-            var url = entries[i];
-            var element = document.getElementById(url);
-            var countSpan = $(element).find(COUNT_CONTAINER_REF);
-            if( countSpan.text() == '') {
-              countSpan.text(0);
-            }
-          }
-        })
-        .fail(function (object, error) {
-          console.log("Error: " + error.code + " " + error.message);
-        });
-    }
-
-    function addCount(Counter) {
-      var $visitors = $(".leancloud_visitors");
-      var url = $visitors.attr('id').trim();
-      var title = $visitors.attr('data-flag-title').trim();
-      var query = new AV.Query(Counter);
-
-      query.equalTo("url", url);
-      query.find({
-        success: function(results) {
-          if (results.length > 0) {
-            var counter = results[0];
-            counter.fetchWhenSave(true);
-            counter.increment("time");
-            counter.save(null, {
-              success: function(counter) {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(counter.get('time'));
-              },
-              error: function(counter, error) {
-                console.log('Failed to save Visitor num, with error message: ' + error.message);
-              }
-            });
-          } else {
-            var newcounter = new Counter();
-            /* Set ACL */
-            var acl = new AV.ACL();
-            acl.setPublicReadAccess(true);
-            acl.setPublicWriteAccess(true);
-            newcounter.setACL(acl);
-            /* End Set ACL */
-            newcounter.set("title", title);
-            newcounter.set("url", url);
-            newcounter.set("time", 1);
-            newcounter.save(null, {
-              success: function(newcounter) {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
-              },
-              error: function(newcounter, error) {
-                console.log('Failed to create');
-              }
-            });
-          }
-        },
-        error: function(error) {
-          console.log('Error:' + error.code + " " + error.message);
-        }
-      });
-    }
-
-    $(function() {
-      var Counter = AV.Object.extend("Counter");
-      if ($('.leancloud_visitors').length == 1) {
-        addCount(Counter);
-      } else if ($('.post-title-link').length > 1) {
-        showTime(Counter);
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
       }
     });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功!");
+      e.clearSelection();
+    })
+  })
   </script>
 
 
+<script src="/js/main.js"></script>
 
-  
+<!-- search -->
 
-  
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+  <script type="text/javascript">
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?05cf61e6ffb961295992c8d4f08c74fe";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+        })();
+        </script>
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
 
 
 </body>
