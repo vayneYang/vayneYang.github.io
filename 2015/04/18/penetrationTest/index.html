@@ -14,7 +14,7 @@
 <meta property="og:description" content="简介渗透测试是一种合法且授权定位计算机系统，并对其成功实施漏洞攻击的方法，其目的是为了使这些受测系统更加安全。 渗透测试（Penetration Testing或者Pen Testing，PT）也称为：  黑客活动（Hacking） 道德黑客（Ethical Hacking） 白帽黑客（White Hat Hacking）  搭建平台Linux中用于渗透测试的最常用的发行版之一是“BackTrac">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2015-04-18T01:47:42.000Z">
-<meta property="article:modified_time" content="2020-12-22T18:14:43.978Z">
+<meta property="article:modified_time" content="2020-12-23T03:27:59.158Z">
 <meta property="article:author" content="blueblue">
 <meta property="article:tag" content="方法论">
 <meta name="twitter:card" content="summary">
@@ -106,7 +106,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-number">1.</span> <span class="toc-text">简介</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%90%AD%E5%BB%BA%E5%B9%B3%E5%8F%B0"><span class="toc-number">1.1.</span> <span class="toc-text">搭建平台</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%BB%91%E5%AE%A2%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%85%A5%E9%97%A8%E6%96%B9%E6%B3%95%E8%AE%BA"><span class="toc-number">2.</span> <span class="toc-text">黑客渗透测试入门方法论</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BE%A6%E5%AF%9F"><span class="toc-number">2.1.</span> <span class="toc-text">侦察</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%AB%E6%8F%8F"><span class="toc-number">2.2.</span> <span class="toc-text">扫描</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8"><span class="toc-number">2.3.</span> <span class="toc-text">漏洞利用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%B4%E6%8C%81%E8%AE%BF%E9%97%AE"><span class="toc-number">2.4.</span> <span class="toc-text">维持访问</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-number">1.</span> <span class="toc-text">简介</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%90%AD%E5%BB%BA%E5%B9%B3%E5%8F%B0"><span class="toc-number">1.1.</span> <span class="toc-text">搭建平台</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%BB%91%E5%AE%A2%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%85%A5%E9%97%A8%E6%96%B9%E6%B3%95%E8%AE%BA"><span class="toc-number">2.</span> <span class="toc-text">黑客渗透测试入门方法论</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BE%A6%E5%AF%9F"><span class="toc-number">2.1.</span> <span class="toc-text">侦察</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%AB%E6%8F%8F"><span class="toc-number">2.2.</span> <span class="toc-text">扫描</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8"><span class="toc-number">2.3.</span> <span class="toc-text">漏洞利用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%B4%E6%8C%81%E8%AE%BF%E9%97%AE"><span class="toc-number">2.4.</span> <span class="toc-text">维持访问</span></a></li></ol></li></ol>
     </div>
   </span>
 </div>
@@ -155,26 +155,26 @@
   
 
   <div class="content" itemprop="articleBody">
-    <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>渗透测试是一种合法且授权定位计算机系统，并对其成功实施漏洞攻击的方法，其目的是为了使这些受测系统更加安全。</p>
+    <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>渗透测试是一种合法且授权定位计算机系统，并对其成功实施漏洞攻击的方法，其目的是为了使这些受测系统更加安全。</p>
 <p>渗透测试（Penetration Testing或者Pen Testing，PT）也称为：</p>
 <ul>
 <li>黑客活动（Hacking）</li>
 <li>道德黑客（Ethical Hacking）</li>
 <li>白帽黑客（White Hat Hacking）</li>
 </ul>
-<h2 id="搭建平台"><a href="#搭建平台" class="headerlink" title="搭建平台"></a>搭建平台</h2><p>Linux中用于渗透测试的最常用的发行版之一是“BackTrack”（现在，BackTrack已被Kali Linux所代替，BT将不再维护），它预先加载了成百上千种安装并配置好的安全工具。默认情况下，Backtrack并不启用网络功能，因为作为渗透测试人员通常会设法隐藏自己来避免被人发现，计算机一旦接入网络，启动之后就会马上通过广播的方式向整个网络申请DHCP服务器和IP地址，暴露行踪。为了避免这种情况，Backtrack机器的网络接口默认是关闭的。</p>
+<h3 id="搭建平台"><a href="#搭建平台" class="headerlink" title="搭建平台"></a>搭建平台</h3><p>Linux中用于渗透测试的最常用的发行版之一是“BackTrack”（现在，BackTrack已被Kali Linux所代替，BT将不再维护），它预先加载了成百上千种安装并配置好的安全工具。默认情况下，Backtrack并不启用网络功能，因为作为渗透测试人员通常会设法隐藏自己来避免被人发现，计算机一旦接入网络，启动之后就会马上通过广播的方式向整个网络申请DHCP服务器和IP地址，暴露行踪。为了避免这种情况，Backtrack机器的网络接口默认是关闭的。</p>
 <p>  启用网络（kali linux）：【ifconfig用于临时设置，重启失效】<br><code>  ifconfig -a</code><br><code>  ifconfig eth0 up</code></p>
 <p>  手动配置IP地址：<br><code> ifconfig eth0 [IP] netmask [子网掩码]</code></p>
 <p>  设置网关：<br><code>  route add default  gw 网关地址</code><br> <code>  route add default dev eth0   //默认路由，将去往未知网络的数据包全部从接口eth0发出去</code></p>
 <p>  使用DHCP分配IP地址：<br><code>  dhclient eth0</code></p>
-<h1 id="黑客渗透测试入门方法论"><a href="#黑客渗透测试入门方法论" class="headerlink" title="黑客渗透测试入门方法论"></a>黑客渗透测试入门方法论</h1><h2 id="侦察"><a href="#侦察" class="headerlink" title="侦察"></a>侦察</h2><p>也就是收集信息，在收集目标信息上所花的时间越多，后续阶段的成功率就越高。而这一步骤恰恰是当前整个渗透测试方法体系中最容易被忽略、最不被重视、最易受人误解的一环。</p>
-<h2 id="扫描"><a href="#扫描" class="headerlink" title="扫描"></a>扫描</h2><ul>
+<h2 id="黑客渗透测试入门方法论"><a href="#黑客渗透测试入门方法论" class="headerlink" title="黑客渗透测试入门方法论"></a>黑客渗透测试入门方法论</h2><h3 id="侦察"><a href="#侦察" class="headerlink" title="侦察"></a>侦察</h3><p>也就是收集信息，在收集目标信息上所花的时间越多，后续阶段的成功率就越高。而这一步骤恰恰是当前整个渗透测试方法体系中最容易被忽略、最不被重视、最易受人误解的一环。</p>
+<h3 id="扫描"><a href="#扫描" class="headerlink" title="扫描"></a>扫描</h3><ul>
 <li>端口扫描</li>
 <li>漏洞扫描</li>
 </ul>
 <p>一旦完成了端口扫描，就拥有了目标的开放端口和可能已开启服务的列表；漏洞扫描用于定位和识别在目标计算机上运行的软件和服务所存在的缺陷。</p>
-<h2 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h2><p>漏洞利用的最终目标是在目标计算机上获得管理员权限（即完全控制权）。</p>
-<h2 id="维持访问"><a href="#维持访问" class="headerlink" title="维持访问"></a>维持访问</h2><p>通常，在漏洞利用阶段提供的攻击载荷只能提供开启系统的临时访问权限，所以需要创建一个可以永久控制目标系统的后门进程。这个后门进程可以让我们以管理员的权限重新开启已经关闭的程序，甚至重启目标计算机。</p>
+<h3 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h3><p>漏洞利用的最终目标是在目标计算机上获得管理员权限（即完全控制权）。</p>
+<h3 id="维持访问"><a href="#维持访问" class="headerlink" title="维持访问"></a>维持访问</h3><p>通常，在漏洞利用阶段提供的攻击载荷只能提供开启系统的临时访问权限，所以需要创建一个可以永久控制目标系统的后门进程。这个后门进程可以让我们以管理员的权限重新开启已经关闭的程序，甚至重启目标计算机。</p>
 
   </div>
 </article>
@@ -182,14 +182,17 @@
 
 
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
-    <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
+ 
+  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+  <script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script>
+
+  <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
+
     <div id="gitalk-container"></div>
     <script type="text/javascript">
         var gitalk = new Gitalk({
-            clientID: '8de6a3283ebfa806722a',
-            clientSecret: 'fedb363b9a59f3589ed12bd338b75e97a63034f5',
+            clientID: '4b1c605911ce5fc4f9f1',
+            clientSecret: '0368c3aebb381bce5f47d4cbc6bd390530b4bd05',
             id: md5(window.location.pathname),
             repo: 'vayneYang.github.io',
             owner: 'vayneYang',
@@ -218,7 +221,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-number">1.</span> <span class="toc-text">简介</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%90%AD%E5%BB%BA%E5%B9%B3%E5%8F%B0"><span class="toc-number">1.1.</span> <span class="toc-text">搭建平台</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%BB%91%E5%AE%A2%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%85%A5%E9%97%A8%E6%96%B9%E6%B3%95%E8%AE%BA"><span class="toc-number">2.</span> <span class="toc-text">黑客渗透测试入门方法论</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BE%A6%E5%AF%9F"><span class="toc-number">2.1.</span> <span class="toc-text">侦察</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%AB%E6%8F%8F"><span class="toc-number">2.2.</span> <span class="toc-text">扫描</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8"><span class="toc-number">2.3.</span> <span class="toc-text">漏洞利用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%B4%E6%8C%81%E8%AE%BF%E9%97%AE"><span class="toc-number">2.4.</span> <span class="toc-text">维持访问</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-number">1.</span> <span class="toc-text">简介</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%90%AD%E5%BB%BA%E5%B9%B3%E5%8F%B0"><span class="toc-number">1.1.</span> <span class="toc-text">搭建平台</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%BB%91%E5%AE%A2%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%85%A5%E9%97%A8%E6%96%B9%E6%B3%95%E8%AE%BA"><span class="toc-number">2.</span> <span class="toc-text">黑客渗透测试入门方法论</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BE%A6%E5%AF%9F"><span class="toc-number">2.1.</span> <span class="toc-text">侦察</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%AB%E6%8F%8F"><span class="toc-number">2.2.</span> <span class="toc-text">扫描</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8"><span class="toc-number">2.3.</span> <span class="toc-text">漏洞利用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%B4%E6%8C%81%E8%AE%BF%E9%97%AE"><span class="toc-number">2.4.</span> <span class="toc-text">维持访问</span></a></li></ol></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">
