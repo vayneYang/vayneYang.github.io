@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="直到正式提出辞职的前夕，其实我依然处在迷茫的情绪之中。虽下了自由职业的决心，但还没想好如何迈出这一步，去试探哪个领域；我不想等到万事俱备再去做，就是要享受破釜沉舟的乐趣，当一切都计划好了，按部就班去做时未免少了些新奇感。那晚也不知是什么契机，就是灵机一动，想到了量化交易这条路。 说来好笑，这念头是在洗澡时冒出来的。我就是这么奇怪的人，别人洗澡时都超快乐，哼着小曲好不自在。而我洗澡时都在回想白天发生">
+<meta property="og:type" content="article">
+<meta property="og:title" content="小白初探——跨期套利">
+<meta property="og:url" content="https://saltedfish.blue/2020/12/26/arbitrage/index.html">
+<meta property="og:site_name" content="咸鱼试炼场">
+<meta property="og:description" content="直到正式提出辞职的前夕，其实我依然处在迷茫的情绪之中。虽下了自由职业的决心，但还没想好如何迈出这一步，去试探哪个领域；我不想等到万事俱备再去做，就是要享受破釜沉舟的乐趣，当一切都计划好了，按部就班去做时未免少了些新奇感。那晚也不知是什么契机，就是灵机一动，想到了量化交易这条路。 说来好笑，这念头是在洗澡时冒出来的。我就是这么奇怪的人，别人洗澡时都超快乐，哼着小曲好不自在。而我洗澡时都在回想白天发生">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-12-26T10:29:27.000Z">
+<meta property="article:modified_time" content="2020-12-26T14:53:49.761Z">
+<meta property="article:author" content="blueblue">
+<meta property="article:tag" content="量化交易">
+<meta property="article:tag" content="套利">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>小白初探——跨期套利</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+      
+<link rel="stylesheet" href="/css/rtl.css">
+
+    
+    <!-- rss -->
+    
+    
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="/categories/">分类</a></li>
+         
+          <li><a href="/tags/">标签</a></li>
+         
+          <li><a href="/about/">关于我</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" href="/2020/10/18/flag-day-7/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://saltedfish.blue/2020/12/26/arbitrage/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://saltedfish.blue/2020/12/26/arbitrage/&text=小白初探——跨期套利"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://saltedfish.blue/2020/12/26/arbitrage/&title=小白初探——跨期套利"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://saltedfish.blue/2020/12/26/arbitrage/&is_video=false&description=小白初探——跨期套利"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=小白初探——跨期套利&body=Check out this article: https://saltedfish.blue/2020/12/26/arbitrage/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://saltedfish.blue/2020/12/26/arbitrage/&title=小白初探——跨期套利"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://saltedfish.blue/2020/12/26/arbitrage/&title=小白初探——跨期套利"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://saltedfish.blue/2020/12/26/arbitrage/&title=小白初探——跨期套利"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://saltedfish.blue/2020/12/26/arbitrage/&title=小白初探——跨期套利"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://saltedfish.blue/2020/12/26/arbitrage/&name=小白初探——跨期套利&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://saltedfish.blue/2020/12/26/arbitrage/&t=小白初探——跨期套利"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%95%E4%B8%BA%E5%A5%97%E5%88%A9%EF%BC%9F"><span class="toc-number">1.</span> <span class="toc-text">何为套利？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A5%97%E5%88%A9%E4%BA%A4%E6%98%93%E7%9A%84%E5%88%86%E7%B1%BB"><span class="toc-number">2.</span> <span class="toc-text">套利交易的分类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B7%A8%E6%9C%9F%E5%A5%97%E5%88%A9"><span class="toc-number">2.1.</span> <span class="toc-text">跨期套利</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B7%A8%E5%B8%82%E5%A5%97%E5%88%A9"><span class="toc-number">2.2.</span> <span class="toc-text">跨市套利</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B7%A8%E5%93%81%E7%A7%8D%E5%A5%97%E5%88%A9"><span class="toc-number">2.3.</span> <span class="toc-text">跨品种套利</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B7%A8%E6%9C%9F%E5%A5%97%E5%88%A9%E5%8E%9F%E7%90%86%EF%BC%88e-g-%E6%9C%9F%E7%8E%B0%E5%A5%97%E5%88%A9%EF%BC%89"><span class="toc-number">3.</span> <span class="toc-text">跨期套利原理（e.g. 期现套利）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A3%8E%E9%99%A9"><span class="toc-number">3.1.</span> <span class="toc-text">风险</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%98%E5%8A%BF"><span class="toc-number">3.2.</span> <span class="toc-text">优势</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%9F%E7%8E%B0%E5%A5%97%E5%88%A9%E8%BF%9B%E9%98%B6"><span class="toc-number">4.</span> <span class="toc-text">期现套利进阶</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%92%88%E5%AF%B9%E7%AD%89%E5%8D%8A%E5%B9%B4%E6%89%8D%E8%83%BD%E7%9B%88%E5%88%A9%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-number">4.1.</span> <span class="toc-text">针对等半年才能盈利的问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%92%88%E5%AF%B9%E6%B6%88%E8%80%97%E7%9A%84%E6%9C%AC%E9%87%91%E5%A4%AA%E5%A4%9A%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-number">4.2.</span> <span class="toc-text">针对消耗的本金太多的问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%92%88%E5%AF%B9%E7%88%86%E4%BB%93%E7%9A%84%E9%97%AE%E9%A2%98%EF%BC%88%E8%AF%AF%EF%BC%89"><span class="toc-number">4.3.</span> <span class="toc-text">针对爆仓的问题（误）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%92%88%E5%AF%B9%E7%88%86%E4%BB%93%E7%9A%84%E9%97%AE%E9%A2%98%EF%BC%81"><span class="toc-number">4.4.</span> <span class="toc-text">针对爆仓的问题！</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E6%88%98"><span class="toc-number">5.</span> <span class="toc-text">实战</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E8%AE%A1%E7%AE%97%E7%9B%88%E5%88%A9%E5%85%AC%E5%BC%8F"><span class="toc-number">5.0.1.</span> <span class="toc-text">一、计算盈利公式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E6%A0%B9%E6%8D%AE%E4%BB%B7%E5%B7%AE%E6%B3%A2%E5%8A%A8%E7%8E%87%E9%80%89%E6%8B%A9%E6%A0%87%E7%9A%84"><span class="toc-number">5.0.2.</span> <span class="toc-text">二、根据价差波动率选择标的</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E9%80%89%E6%8B%A9%E4%BA%A4%E5%89%B2%E6%97%A5%E6%9C%9F"><span class="toc-number">5.0.3.</span> <span class="toc-text">三、选择交割日期</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E5%AE%9E%E6%97%B6%E8%AE%A1%E7%AE%97%E4%BB%B7%E5%B7%AE%E5%8F%8A%E5%88%A9%E6%B6%A6"><span class="toc-number">5.0.4.</span> <span class="toc-text">四、实时计算价差及利润</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E9%80%89%E6%8B%A9%E5%90%88%E9%80%82%E7%9A%84%E6%97%B6%E6%9C%BA%E5%BC%80%E4%BB%93%E5%B9%B3%E4%BB%93"><span class="toc-number">5.0.5.</span> <span class="toc-text">五、选择合适的时机开仓平仓</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B7%A8%E4%B8%8D%E8%BF%87%E7%9A%84%E5%9D%91"><span class="toc-number">6.</span> <span class="toc-text">跨不过的坑</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        小白初探——跨期套利
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">blueblue</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2020-12-26T10:29:27.000Z" itemprop="datePublished">2020-12-26</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/%E5%A5%97%E5%88%A9/" rel="tag">套利</a>, <a class="tag-link-link" href="/tags/%E9%87%8F%E5%8C%96%E4%BA%A4%E6%98%93/" rel="tag">量化交易</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>直到正式提出辞职的前夕，其实我依然处在迷茫的情绪之中。虽下了自由职业的决心，但还没想好如何迈出这一步，去试探哪个领域；我不想等到万事俱备再去做，就是要享受破釜沉舟的乐趣，当一切都计划好了，按部就班去做时未免少了些新奇感。那晚也不知是什么契机，就是灵机一动，想到了量化交易这条路。</p>
+<p>说来好笑，这念头是在洗澡时冒出来的。我就是这么奇怪的人，别人洗澡时都超快乐，哼着小曲好不自在。而我洗澡时都在回想白天发生的事，想着明天的工作，为白天说错的一句话、没吵好的一顿架后悔不已，美好的洗澡时间在懊悔中度过实在是不够愉快，实在是个负面案例。。</p>
+<p>总之我的量化之路，就在那天开始了。</p>
+<hr>
+<p>因为搞量化的目的是不上班也能糊口，因此并没有把收益率定得很高，不希望用高风险来换取收益，从而选择了套利交易。</p>
+<h2 id="何为套利？"><a href="#何为套利？" class="headerlink" title="何为套利？"></a>何为套利？</h2><p>利用不同商品、不同时期、或者在不同的市场上存在价差的事实，卖高买低，赚取其中的价差。</p>
+<p>最简单也是最传统的，商品 A 在甲乙两地的售价不同，商贩就可以在低价区买进A，在高价区卖出A，从中获取差价利润（这可以算是跨市套利）。</p>
+<p>如今套利在金融市场上是很普遍的一种交易方式，因为它受牛熊市的影响比较小，基本上只跟价差有关。（为什么是基本上呢？看完本文，请你动动你聪明的小脑瓜，计算一下套利盈利的公式，看看哪些变量影响了它。）</p>
+<h2 id="套利交易的分类"><a href="#套利交易的分类" class="headerlink" title="套利交易的分类"></a>套利交易的分类</h2><h3 id="跨期套利"><a href="#跨期套利" class="headerlink" title="跨期套利"></a>跨期套利</h3><p>指利用同一标的在不同交割时间下的价差获利，比如 BTC 当周合约与 BTC 的次季合约；ETH 次周合约与 ETH 次季合约；在这里我把现货和合约之间的套利也称为跨期套利，它与狭义上的跨期套利大同小异，唯独现货有个限制：不能加杠杆。</p>
+<h3 id="跨市套利"><a href="#跨市套利" class="headerlink" title="跨市套利"></a>跨市套利</h3><p>同一标的在不同市场上经常存在不同的价格，比如大连商品交易所、东京谷物交易所等都有大豆期货；比如数字货币领域里，比特币在多家交易所皆可交易，比如火币、币安等。不同市场上对商品价格的反应速度不同，就存在着价差。这其中的价差便是有利可图的区间。</p>
+<h3 id="跨品种套利"><a href="#跨品种套利" class="headerlink" title="跨品种套利"></a>跨品种套利</h3><p>有些标的之间的价格会存在某种联系，比如产业链的上下游（螺纹钢-焦炭），比如二者相关/互相可替代（菜油和豆油），此时会发现这两种标的之间价差会长期在一个范围内波动，此时便可获取利润。三角套利我不知道是否能算作跨品种套利，它是指三个标的互相之间存在交叉汇率，一旦其中一对的汇率出现暂时性的偏差，就可进行套利。</p>
+<p>本文我们只对 <strong>跨期套利</strong> 进行介绍。</p>
+<hr>
+<h2 id="跨期套利原理（e-g-期现套利）"><a href="#跨期套利原理（e-g-期现套利）" class="headerlink" title="跨期套利原理（e.g. 期现套利）"></a>跨期套利原理（e.g. 期现套利）</h2><p>以比特币在火币的交易市场为例，2020-12-26 20:00 左右, 现货价格 $24,780，次季合约 $26,780，价差 $2,000。此时卖出一份次季合约，买入等值的现货，待到交割之日，次季合约价格等于现货价格（假设为$40,000），此时合约、现货两头平仓：</p>
+<table>
+<thead>
+<tr>
+<th>步骤</th>
+<th>现货</th>
+<th>次季合约</th>
+<th>现货操作</th>
+<th>次季操作</th>
+<th>盈亏</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>24780</td>
+<td>26780</td>
+<td>买入 5w 刀的 BTC</td>
+<td>卖出 500 张合约</td>
+<td>+50000/24780 - 50000/26780=0.1507 BTC</td>
+</tr>
+<tr>
+<td>2. 2021-06-25 交割之日</td>
+<td>40000</td>
+<td>交割价格 40000</td>
+<td>卖出 5w 刀的 BTC</td>
+<td>买入 500 张合约</td>
+<td>-50000/40000 + 50000/40000=0</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>合计盈利 0.1507 BTC</td>
+</tr>
+</tbody></table>
+<p>因为合约会以现货的价格交割，所以第二步其实是同价、同量的相反操作，实际收益就是第一步中的价差，它也是此次套利的收益上限。</p>
+<p>也因为合约必定会以现货的价格交割，所以以上推理的盈利是必然可以达成的。</p>
+<h3 id="风险"><a href="#风险" class="headerlink" title="风险"></a>风险</h3><p>我们知道价差总会缩小直至归零，所以风险按理说是没有的。但在价格变化过程中，价差有可能会增大，这时你的账户上就会出现浮亏了，但不用慌，价差总会缩小的。</p>
+<h3 id="优势"><a href="#优势" class="headerlink" title="优势"></a>优势</h3><p>风险很低（币价归零、交易所跑路之类的风险不考虑。。它们不是套利这套策略特有的风险）</p>
+<h2 id="期现套利进阶"><a href="#期现套利进阶" class="headerlink" title="期现套利进阶"></a>期现套利进阶</h2><p>也许你会觉得期现套利的利润空间实在太小了，折合近 4 个 BTC 的本金，等了半年，只赚了 0.15 个 BTC。年化 7.5%，十分一般嘛。</p>
+<p>其实本咸鱼也觉得太少了… 但想一想风险这么低，白嫖的钱，跑赢了所有定期储蓄，是不是超值了？</p>
+<p>其实，我们还可以把心理风险阈值调高一些，换取更大的利润 —— </p>
+<h3 id="针对等半年才能盈利的问题"><a href="#针对等半年才能盈利的问题" class="headerlink" title="针对等半年才能盈利的问题"></a>针对等半年才能盈利的问题</h3><p>如果我们提高开仓、平仓的频率呢？前文提到过价差可能会增大，可能会减小，最后必然减小到0。也就是说，这个价差是在一定范围内波动的。</p>
+<table>
+<thead>
+<tr>
+<th>步骤</th>
+<th>现货合约</th>
+<th>次季合约</th>
+<th>价差（次季-现货）</th>
+<th>现货操作</th>
+<th>次季操作</th>
+<th>盈亏</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>24780</td>
+<td>26780</td>
+<td>2000</td>
+<td>买入 5w 刀的 BTC</td>
+<td>卖出 500 张合约</td>
+<td>+ 50000/24780 - 50000/26780 = 0.1507 BTC</td>
+</tr>
+<tr>
+<td>2. 2天后</td>
+<td>25000</td>
+<td>26500</td>
+<td>1500</td>
+<td>卖出 5w 刀的 BTC</td>
+<td>买入 500 张合约</td>
+<td>- 50000/25000 + 50000/26500 = -0.1132 BTC</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>合计盈利 0.0375 BTC</td>
+</tr>
+<tr>
+<td>3. 4天后</td>
+<td>23000</td>
+<td>24800</td>
+<td>1800</td>
+<td>买入 …</td>
+<td>卖出 …</td>
+<td>+ 50000/23000 - 50000/24800 = 0.1578 BTC</td>
+</tr>
+<tr>
+<td>4. 7天后</td>
+<td>24000</td>
+<td>25300</td>
+<td>1300</td>
+<td>卖出 …</td>
+<td>买入 …</td>
+<td>- 50000/24000 + 50000/25300 = -0.1070 BTC</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>合计盈利 0.0508 BTC</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>7 日合计 0.0883 BTC</td>
+</tr>
+</tbody></table>
+<p>是不是收益飞快增长呢？当然上面的数字是我瞎编的，但并不妨碍说明问题：只要价差波动，就可以从中赚取利润，不必等到交割之日。</p>
+<h3 id="针对消耗的本金太多的问题"><a href="#针对消耗的本金太多的问题" class="headerlink" title="针对消耗的本金太多的问题"></a>针对消耗的本金太多的问题</h3><p>说到这儿，跨期套利就要登场了。因为期货交易（合约）是可以加杠杆的，所以我们可以小小地开个三五倍杠杆，稍稍撬动大一点的资金。你不必非得付出 10w 刀这么多就能得到上述利润。</p>
+<p>但此时就有爆仓的风险了，万一一个单边行情上来，岂不是全打水漂了？</p>
+<h3 id="针对爆仓的问题（误）"><a href="#针对爆仓的问题（误）" class="headerlink" title="针对爆仓的问题（误）"></a>针对爆仓的问题（误）</h3><p>我们知道上述操作其实是在看空价差，那么同时看涨价差如何？</p>
+<p>类比看空价差的逻辑：当价差变低且还有增大的余地时，远期合约买入做多，近期合约卖出做空，当价差增大，两头平仓。看涨的利润也获得了。而且，同一币种的交割合约账户内，多空仓的盈亏是互补的，所以这种情况下使用跨期套利策略的爆仓概率就减小了。（仔细想想可能是馊主意，看空和看涨是对立的，最完美的套利情况下两边不可能同时持仓。算了，只当个扩大盈利的办法吧。）</p>
+<h3 id="针对爆仓的问题！"><a href="#针对爆仓的问题！" class="headerlink" title="针对爆仓的问题！"></a>针对爆仓的问题！</h3><p>全仓模式下，不同期的同标的合约共享同一个账户，也就是说，在次季、当周同时开多、空，爆仓概率就真的大大降低了，此时可以考虑加大杠杆倍数。（但我选择的套利方式是永续 + 交割，所以享受不了这个红利）</p>
+<h2 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h2><h4 id="一、计算盈利公式"><a href="#一、计算盈利公式" class="headerlink" title="一、计算盈利公式"></a>一、计算盈利公式</h4><p>  目的是在数学层面了解策略，看看盈利到底和哪些因素相关。是只有价差吗？</p>
+<h4 id="二、根据价差波动率选择标的"><a href="#二、根据价差波动率选择标的" class="headerlink" title="二、根据价差波动率选择标的"></a>二、根据价差波动率选择标的</h4><h4 id="三、选择交割日期"><a href="#三、选择交割日期" class="headerlink" title="三、选择交割日期"></a>三、选择交割日期</h4><p>​    本咸鱼针对实际数据进行了统计作图，得到次季与现货的价差最大，次季与永续也可。但现货没有杠杆；永续每 8 个小时就要付一次资金费，资金费率往往很高，完全不输于手续费。。可以根据自己的交易频率情况进行选择。</p>
+<h4 id="四、实时计算价差及利润"><a href="#四、实时计算价差及利润" class="headerlink" title="四、实时计算价差及利润"></a>四、实时计算价差及利润</h4><h4 id="五、选择合适的时机开仓平仓"><a href="#五、选择合适的时机开仓平仓" class="headerlink" title="五、选择合适的时机开仓平仓"></a>五、选择合适的时机开仓平仓</h4><h2 id="跨不过的坑"><a href="#跨不过的坑" class="headerlink" title="跨不过的坑"></a>跨不过的坑</h2><p>​    大家千万不要执着于历史的回测，这是我血与泪的教训：在回测上花了很久，不停地调整参数以期利益最大化。但问题有三：</p>
+<ol>
+<li>历史数据只代表历史，甚至不能完全限定价差的上下限，历史数据跑得再好用处也不很大。</li>
+<li>在实际 market ticks 数据上我也跑过两天，发现利润比历史数据更甚（主要是价格数据成倍增长了，交易机会也陡增），十分开心。但是。。事实证明这也是虚假繁荣。所以随便跑跑测一下就得了。</li>
+<li>最大的问题是实盘交易会产生滑点。可能产生单边成交的情况，如果遇上单边行情就产生亏损了。</li>
+<li>控制头寸建立的步幅，如果一次开太多张合约，遇到单边成交 + 单边行情，你可能会赔到哭。</li>
+</ol>
+<hr>
+<p>以上，实战部分比较潦草。主要原因是第一次写量化相关的文章，不知该如何保护原创。就酱~ 希望我的分享能帮助到大家 ~</p>
+<p>P.S. 如需转载请联系本文作者 <a href="mailto:shinyuwan@outlook.com">blueblue</a>。</p>
+
+  </div>
+</article>
+
+
+
+
+ 
+  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+  <script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script>
+
+  <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
+
+    <div id="gitalk-container"></div>
+    <script type="text/javascript">
+        var gitalk = new Gitalk({
+            clientID: '4b1c605911ce5fc4f9f1',
+            clientSecret: '0368c3aebb381bce5f47d4cbc6bd390530b4bd05',
+            id: md5(window.location.pathname),
+            repo: 'vayneYang.github.io',
+            owner: 'vayneYang',
+            admin: 'vayneYang',
+            distractionFreeMode: ''
+        })
+        gitalk.render('gitalk-container')
+    </script>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="/categories/">分类</a></li>
+         
+          <li><a href="/tags/">标签</a></li>
+         
+          <li><a href="/about/">关于我</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%95%E4%B8%BA%E5%A5%97%E5%88%A9%EF%BC%9F"><span class="toc-number">1.</span> <span class="toc-text">何为套利？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A5%97%E5%88%A9%E4%BA%A4%E6%98%93%E7%9A%84%E5%88%86%E7%B1%BB"><span class="toc-number">2.</span> <span class="toc-text">套利交易的分类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B7%A8%E6%9C%9F%E5%A5%97%E5%88%A9"><span class="toc-number">2.1.</span> <span class="toc-text">跨期套利</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B7%A8%E5%B8%82%E5%A5%97%E5%88%A9"><span class="toc-number">2.2.</span> <span class="toc-text">跨市套利</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B7%A8%E5%93%81%E7%A7%8D%E5%A5%97%E5%88%A9"><span class="toc-number">2.3.</span> <span class="toc-text">跨品种套利</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B7%A8%E6%9C%9F%E5%A5%97%E5%88%A9%E5%8E%9F%E7%90%86%EF%BC%88e-g-%E6%9C%9F%E7%8E%B0%E5%A5%97%E5%88%A9%EF%BC%89"><span class="toc-number">3.</span> <span class="toc-text">跨期套利原理（e.g. 期现套利）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A3%8E%E9%99%A9"><span class="toc-number">3.1.</span> <span class="toc-text">风险</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%98%E5%8A%BF"><span class="toc-number">3.2.</span> <span class="toc-text">优势</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%9F%E7%8E%B0%E5%A5%97%E5%88%A9%E8%BF%9B%E9%98%B6"><span class="toc-number">4.</span> <span class="toc-text">期现套利进阶</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%92%88%E5%AF%B9%E7%AD%89%E5%8D%8A%E5%B9%B4%E6%89%8D%E8%83%BD%E7%9B%88%E5%88%A9%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-number">4.1.</span> <span class="toc-text">针对等半年才能盈利的问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%92%88%E5%AF%B9%E6%B6%88%E8%80%97%E7%9A%84%E6%9C%AC%E9%87%91%E5%A4%AA%E5%A4%9A%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-number">4.2.</span> <span class="toc-text">针对消耗的本金太多的问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%92%88%E5%AF%B9%E7%88%86%E4%BB%93%E7%9A%84%E9%97%AE%E9%A2%98%EF%BC%88%E8%AF%AF%EF%BC%89"><span class="toc-number">4.3.</span> <span class="toc-text">针对爆仓的问题（误）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%92%88%E5%AF%B9%E7%88%86%E4%BB%93%E7%9A%84%E9%97%AE%E9%A2%98%EF%BC%81"><span class="toc-number">4.4.</span> <span class="toc-text">针对爆仓的问题！</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E6%88%98"><span class="toc-number">5.</span> <span class="toc-text">实战</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E8%AE%A1%E7%AE%97%E7%9B%88%E5%88%A9%E5%85%AC%E5%BC%8F"><span class="toc-number">5.0.1.</span> <span class="toc-text">一、计算盈利公式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E6%A0%B9%E6%8D%AE%E4%BB%B7%E5%B7%AE%E6%B3%A2%E5%8A%A8%E7%8E%87%E9%80%89%E6%8B%A9%E6%A0%87%E7%9A%84"><span class="toc-number">5.0.2.</span> <span class="toc-text">二、根据价差波动率选择标的</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E9%80%89%E6%8B%A9%E4%BA%A4%E5%89%B2%E6%97%A5%E6%9C%9F"><span class="toc-number">5.0.3.</span> <span class="toc-text">三、选择交割日期</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E5%AE%9E%E6%97%B6%E8%AE%A1%E7%AE%97%E4%BB%B7%E5%B7%AE%E5%8F%8A%E5%88%A9%E6%B6%A6"><span class="toc-number">5.0.4.</span> <span class="toc-text">四、实时计算价差及利润</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E9%80%89%E6%8B%A9%E5%90%88%E9%80%82%E7%9A%84%E6%97%B6%E6%9C%BA%E5%BC%80%E4%BB%93%E5%B9%B3%E4%BB%93"><span class="toc-number">5.0.5.</span> <span class="toc-text">五、选择合适的时机开仓平仓</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B7%A8%E4%B8%8D%E8%BF%87%E7%9A%84%E5%9D%91"><span class="toc-number">6.</span> <span class="toc-text">跨不过的坑</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://saltedfish.blue/2020/12/26/arbitrage/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://saltedfish.blue/2020/12/26/arbitrage/&text=小白初探——跨期套利"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://saltedfish.blue/2020/12/26/arbitrage/&title=小白初探——跨期套利"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://saltedfish.blue/2020/12/26/arbitrage/&is_video=false&description=小白初探——跨期套利"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=小白初探——跨期套利&body=Check out this article: https://saltedfish.blue/2020/12/26/arbitrage/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://saltedfish.blue/2020/12/26/arbitrage/&title=小白初探——跨期套利"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://saltedfish.blue/2020/12/26/arbitrage/&title=小白初探——跨期套利"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://saltedfish.blue/2020/12/26/arbitrage/&title=小白初探——跨期套利"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://saltedfish.blue/2020/12/26/arbitrage/&title=小白初探——跨期套利"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://saltedfish.blue/2020/12/26/arbitrage/&name=小白初探——跨期套利&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://saltedfish.blue/2020/12/26/arbitrage/&t=小白初探——跨期套利"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2020
+    blueblue
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="/categories/">分类</a></li>
+         
+          <li><a href="/tags/">标签</a></li>
+         
+          <li><a href="/about/">关于我</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+
+    <!-- jquery -->
+
+<script src="/lib/jquery/jquery.min.js"></script>
+
+
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+<!-- clipboard -->
+
+  
+<script src="/lib/clipboard/clipboard.min.js"></script>
+
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+  <script type="text/javascript">
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?05cf61e6ffb961295992c8d4f08c74fe";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+        })();
+        </script>
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>
